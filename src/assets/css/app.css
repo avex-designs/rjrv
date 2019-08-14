@@ -1,0 +1,315 @@
+
+/****** VARIABLES  ********
+
+blueprimary: #2F4C77;
+sectionInverse: #ECECEC;
+golden: #C1A269;
+
+****************************/
+
+
+/******************* BASE ********************/
+
+html {
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+
+
+a {
+	color: #2F4C77;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+body {
+	color: #1D427A;
+	font-family: franklin-gothic-urw, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+/******************* LAYOUT ******************/
+
+.container {
+	width: 100%;
+	max-width: 1140px!important;
+}
+
+.container-large {
+	width: 100%;
+	max-width: 1540px!important;
+}
+
+
+/* ---- Sections ---*/
+
+.section {
+	padding: 2rem 0;
+}
+
+.section-inverse {
+	background-color: #ECECEC;
+}
+
+.section-hero {
+	padding-top: 96px;
+}
+
+
+@media (min-width: 576px) {
+
+	.section-hero-pulldown .rjrv-placeholder {
+		margin-bottom: -8rem;
+	}
+
+	.section-hero-pulldown {
+		margin-bottom: 8rem;
+	}
+
+	.rjrv-placeholder.rjrv-placeholder-absolute {
+		position: absolute;
+		width: 100%;
+		top: -4rem;
+	}
+}
+
+@media (max-width: 577px) {
+	.section-sm-clean {
+		background: none!important;
+	}
+
+	.section-hero {
+		padding-bottom: 0;
+	}
+}
+
+
+/* ---- Header  ---*/
+
+.rjrv-l-header {
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 1005;
+	position: fixed;
+	padding: 0.5rem 1rem;
+}
+
+.rjrv-l-header .row {
+	position: relative;
+	min-height: 80px;
+}
+
+@media (max-width: 576px) {
+	.rjrv-l-header{
+		background: #fff;
+	}
+}
+
+
+/* ---- Footer ---*/
+
+.rjrv-l-footer a,
+.rjrv-l-footer small {
+	color: #fff;
+	letter-spacing: 1.8px;
+	text-transform: uppercase;
+}
+
+.rjrv-l-footer .copy {
+	opacity: 0.7;
+}
+
+.rjrv-l-footer {
+	padding: 1rem 0;
+	background-color: #2F4C77; 
+}
+
+.rjrv-l-footer nav {
+	min-height: 190px;
+}
+
+
+/**************** COMPONENTS ******************/
+
+.btn-rjvr-secondary {
+	border-radius: 50px;
+	padding: 0.5rem 3rem 0.6rem 3rem;
+	border: 2px solid #C1A269;
+}
+
+.btn-rjvr-secondary.btn-icon {
+	padding: 0.5rem 6rem 0.6rem 3rem;
+}
+
+
+/******** PROGRESIVE IMAGE LOADING **********/
+
+.rjrv-placeholder {
+  background-color: #f6f6f6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.rjrv-placeholder img {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s linear;
+}
+
+.rjrv-placeholder img.loaded {
+  opacity: 1;
+}
+
+.rjrv-placeholder .img-small {
+  filter: blur(50px);
+  transform: scale(1); /* this is needed so Safari keeps sharp edges */
+}
+
+
+.rjrv-quote-text blockquote {
+	padding: 0;
+
+	color: #C2A46B;
+	margin: 0 0 1rem 0;
+}
+
+.rjrv-quote-text p {
+	opacity: 0.8;
+	padding-left: 50px;
+	position: relative;
+	display: inline-block;
+	text-transform: uppercase;
+}
+
+.rjrv-quote-text p:before {
+	content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    margin-top: -1.5px;
+    background: #C1A269;
+}
+
+
+
+@media (min-width: 767px) {
+	.rjrv-placeholder-sm {
+		max-width: 620px;
+		margin-left: 0;
+	}
+
+
+	.order-md-2 .rjrv-placeholder-sm {
+		margin-right: 0;
+		margin-left: auto;
+	}
+
+	.rjrv-placeholder-m0 {
+		margin: 0!important;
+	}
+
+}
+
+
+/**************** HELPERS ******************/
+
+.text-center {
+	text-align: center;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-gold {
+	 color: #C1A269;
+}
+
+.text-spacing {
+	letter-spacing: 1.8px;
+}
+
+.text-decoration {
+	position: relative;
+	padding-left: 3rem;
+}
+
+.text-decoration:before {
+	content: "";
+	width: 30px;
+	height: 2px;
+	left: 0;
+	top: 50%;
+	position: absolute;
+	background: #C1A269;
+}
+
+.text-underline {
+	text-decoration: underline;
+}
+
+.list-unstyled {
+	list-style: none;
+}
+
+.rjrv-decoration-block {
+	opacity: 0.75;
+	padding-left: 45px;
+	position: relative;
+}
+
+.rjrv-decoration-block:before {
+	content: "";
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: #C1A269;
+}
+
+
+@media (min-width: 767px) {
+
+	.rjrv-decoration-block {
+		padding-left: 65px;
+	}
+
+	.rjrv-decoration-block:before {
+	    top: 18px;
+	    left: 0;
+	    width: 50px;
+	}
+	
+
+	.rjrv-fourth-max-lg {
+		max-width: 75%
+	}
+
+	.m-lg-auto {
+		margin: 0 auto;
+	}
+
+	.bg-large-white {
+		transition: background 0.35s;
+		background-color: #fff;
+	}
+}
+
+@media (min-width: 1200px) {
+	.rjrv-half-max-lg {
+		max-width: 50%;
+	}
+}

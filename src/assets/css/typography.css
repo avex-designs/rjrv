@@ -1,0 +1,86 @@
+/* Font Family */
+
+.rjrv-condensed {
+  font-family: franklin-gothic-urw-comp, sans-serif;
+}
+
+
+/* Font Weight Classes */
+
+.fw-400 {
+  font-weight: 400!important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+}
+
+
+/* Responsive Typography */
+
+.responsive-text {
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.responsive-text p {
+  margin-top: 0;
+}
+
+.responsive-text h1 {
+  font-size: 30px;
+  line-height: 1.5;
+}
+
+
+@media screen and (min-width: 320px) {
+  .responsive-text {
+    font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (1200 - 320)));
+  }
+
+  .responsive-text .container-large p {
+    font-size: calc(18px + (21 - 18) * ((100vw - 320px) / (1600 - 320)));
+    line-height: 1.7;
+  }
+
+  .responsive-text .container-large h1.rjrv-section-title-lg {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: calc(30px + (66 - 30) * ((100vw - 320px) / (1600 - 320)));
+    line-height: 1.2;
+  }
+
+  .responsive-text .rjrv-quote-text blockquote {
+    font-size: calc(24px + (34 - 24) * ((100vw - 320px) / (1600 - 320)));
+    line-height: 1.7;
+  }
+  
+
+  .responsive-text h1,
+  .responsive-text .h1 {
+    font-size: calc(30px + (66 - 30) * ((100vw - 320px) / (1600 - 320)));
+    line-height: 1.5;
+  }
+
+  .responsive-text .h2-large {
+    font-size: calc(30px + (56 - 30) * ((100vw - 320px) / (1600 - 320)));
+    line-height: 1.2;
+  }
+
+  .responsive-text .container-large h3,
+  .responsive-text .container-large .h3 {
+    font-size: calc(22px + (28 - 22) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  .responsive-text .btn-rjvr-secondary {
+    font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+}
+

@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `R.J. REYNOLDS VAPOR COMPANY`,
+    description: `At RJRVC, we operate our business in a responsible manner that best balances the needs of our stakeholders. RJRVC is focused on offering responsible, innovative, satisfying products for adult tobacco consumers’ evolving preferences. <strong>Our Vision and Values seek to reflect the interests of shareholders, adult tobacco consumers, employees, and other stakeholders</strong>. RJRVC shares the values and principles of its parent company, Reynolds American Inc.`,
+    author: `@appliedlabs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/img`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -24,8 +24,15 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/img/rjrv-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+        resolve: `gatsby-plugin-routes`,
+        options: {
+            // this is the path to your routes configuration file
+            path: `${__dirname}/src/routes.js`,
+        },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

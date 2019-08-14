@@ -1,0 +1,252 @@
+.rjrv-menu {
+	float: left;
+	padding: 0;
+}
+
+
+.rjrv-menu li {
+	float: left;
+	position: relative;
+	list-style: none;
+}
+
+
+.rjrv-menu > ul > li > a {
+	text-transform: uppercase;
+}
+
+
+.rjrv-menu a {
+	display: block;
+	text-decoration: none;
+	padding: 0.75rem 1.5rem;
+	color: #2F4C77;
+	font-size: 18px;
+	min-width: 80px;
+	text-transform: uppercase;
+}
+
+.rjrv-menu li a {
+	padding: 0.75rem 1rem;
+}
+
+
+.rjrv-menu ul {
+	position: absolute;
+	left: 1rem;
+	top: 100%;
+	visibility: hidden;
+	opacity: 0;
+	padding: 0;
+	border-top: 3px solid #C1A269;
+}
+
+.rjrv-menu ul li {
+	width: 100%;
+	left: 0;
+	min-width: 120px;
+}
+
+.rjrv-menu ul ul {
+	left: 100%;
+	top: -3px;
+	border-top: 3px solid #C1A269;
+}
+
+.rjrv-menu li:hover li {
+	background: #fff
+}
+
+.rjrv-menu li li:hover, 
+.rjrv-menu li li:hover li,
+.rjrv-menu li li.active {
+	background: #f1f1f1;
+}
+
+
+.rjrv-menu li li li:hover {
+	background: #f2f2f2;
+}
+
+.rjrv-menu li:hover > ul {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+/****** Hover and Active Animation / Decoration *******/
+
+.rjrv-menu > li:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0px;
+  left: 1rem;
+  background: #C1A269;
+  transition: width 0.35s;
+}
+
+.rjrv-menu > li.active:after,
+.rjrv-menu > li:not(.has-sub-menu):hover:after {
+	width: 30px;
+	transition: width 0.35s;
+}
+
+
+/****** OffCanvas Panel *******/
+
+.offcanvas-overlay {
+	content: "";
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	opacity: 0;
+	background: rgba(0,0,0,0.5);
+	
+}
+
+.offcanvas-overlay.offcanvas-active {
+	z-index: 99999;
+	opacity: 1;
+	transition: opacity 0.35s;
+	
+}
+
+.offcanvas-slide-menu {
+	width: 300px;
+	background: #2F4C77;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: -300px;
+	z-index: 999999;
+    transition: .35s;
+    padding: 3rem 2rem 2rem;
+}
+
+
+.rjrv-secondary-mobile-menu a {
+	color: #fff;
+	font-size: 1rem;
+	line-height: 1.8rem;
+	letter-spacing: 2.8px;
+}
+
+
+.offcanvas-slide-menu.active {
+	transform: translateX(-300px);
+}
+
+.offcanvas-slide-menu .target-burger {
+	right: 15px;
+    top: 7px;
+}
+
+.offcanvas-slide-menu .target-burger .buns .bun {
+	background: #fff;
+}
+
+.target-burger {
+  margin: 1.125em 0;
+  width: 3.25em;
+  height: 3.25em;
+  position: absolute;
+  display: block;
+  right: 0;
+  border: 0;
+  background: none;
+  outline: none;
+  text-align: center;
+}
+
+.target-burger.toggled .buns .bun {
+  -webkit-transform: rotate(45deg) translateZ(0);
+  transform: rotate(45deg) translateZ(0);
+}
+.target-burger.toggled .buns .bun:last-child {
+  -webkit-transform: rotate(-45deg) translateZ(0);
+  transform: rotate(-45deg) translateZ(0);
+}
+.target-burger .buns {
+  width: 1.625em;
+  height: 1.625em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 14px;
+  left: 0;
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.23, 1, 0.32, 1), color 1s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), color 1s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  color: #fff;
+}
+.target-burger .buns .bun {
+  width: 100%;
+  height: 2px;
+  background-color: #2F4C77;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.75px;
+  -webkit-transform: translateY(-3.75px) translateZ(0);
+  transform: translateY(-3.75px) translateZ(0);
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.23, 1, 0.32, 1), background-color 1s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), background-color 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.target-burger .buns .bun:last-child {
+  -webkit-transform: translateY(3.75px) translateZ(0);
+  transform: translateY(3.75px) translateZ(0);
+}
+
+
+/****** OffCanvas Menu *******/
+
+.rjrv-menu-mobile {
+	margin-top: 3rem;
+	letter-spacing: 2.8px;
+    line-height: 2.8rem;
+    font-size: 1.5rem;
+	text-transform: uppercase;
+}
+
+.rjrv-menu-mobile a {
+    color: #fff;
+    position: relative;
+    
+}
+
+.rjrv-menu-mobile,
+.rjrv-menu-mobile ul,
+.rjrv-menu-mobile ul ul {
+	color: #fff;
+	padding: 0;
+	list-style: none;
+}
+
+
+.rjrv-menu-mobile ul,
+.rjrv-menu-mobile ul ul {
+	max-height: 0;
+  	overflow: hidden;
+  	font-size: 0.85rem;
+  	line-height: 2rem;
+  	padding-left: 10px;
+  	transition: max-height 0.2s ease-out;
+}
+
+.mobile-parent-sub-menu:after,
+.mobile-parent-sub-menu.active:after {
+	content: "";
+	position: absolute;
+	right: -25px;
+	top: 8px;
+	height: 16px;
+	width: 16px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
