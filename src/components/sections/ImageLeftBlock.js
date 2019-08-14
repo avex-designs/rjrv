@@ -23,7 +23,7 @@ const ImageLeftBlock = () => (
 									consumers’ evolving preferences.</p>
 								<a className="rjrv-condensed text-uppercase text-spacing"
 								   href="/about/who-we-are.html">
-									<small class="arrow-right">Learn More</small>
+									<small className="arrow-right">Learn More</small>
 								</a>
 							</div>
 						</div>

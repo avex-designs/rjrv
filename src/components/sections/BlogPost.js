@@ -14,7 +14,7 @@ const BlogPost = () => (
 		<p className="mt-5 rjrv-condensed">
 			<small>
 				<time className="text-uppercase text-spacing text-gold text-decoration"
-					  datetime="2019-03-27">July 8, 2019
+					  dateTime="2019-03-27">July 8, 2019
 				</time>
 			</small>
 		</p>

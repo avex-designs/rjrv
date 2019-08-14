@@ -54,6 +54,16 @@ window.onload = function() {
 
 }
 
+/*document.querySelector('#mobileTriggerOpen').onclick = function () {
+	toggleMobileMenu();
+};
+document.querySelector('#mobileTriggerClose').onclick = function () {
+	toggleMobileMenu();
+};
+
+document.querySelector('#mobileTriggerOpen').addEventListener('click', function () {
+	toggleMobileMenu();
+});*/
 
 function toggleMobileMenu(){
     var btn = document.querySelectorAll('.target-burger');
@@ -90,7 +100,6 @@ window.addEventListener('scroll', function(){
     else {
         remove_class_on_scroll();
     }
-    console.log(scrollpos);
 });
 
 

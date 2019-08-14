@@ -1,6 +1,4 @@
 import React from "react"
-import HomeImage from "../../assets/img/home.jpg";
-import HomeImageXs from "../../assets/img/home-xs.jpg";
 
 const HalfWidthContent = () => (
 	<section className="section p-0 pt-sm-3 pt-lg-5 pb-sm-3 pb-lg-5">

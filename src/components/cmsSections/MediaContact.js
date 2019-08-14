@@ -1,6 +1,4 @@
 import React from "react"
-import HomeImage from "../../assets/img/home.jpg";
-import HomeImageXs from "../../assets/img/home-xs.jpg";
 
 const MediaContact = () => (
 	<section className="section-inverse pt-3 pb-3 pt-sm-5 pb-sm-5">

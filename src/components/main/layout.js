@@ -11,7 +11,7 @@ import { withPrefix, useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
-import Menu from "./menu"
+import MobileMenu from "./mobile_menu"
 import "../../assets/css/main.css"
 import Helmet from "react-helmet"
 
@@ -34,8 +34,8 @@ const Layout = ({ children }) => {
             <script src={withPrefix('js/main.js')} type="text/javascript" />
         </Helmet>
         {/*<!-- Off Canvas Overlay -->*/}
-        <div id="backgroundOverlay" class="offcanvas-overlay"></div>
-        <Menu/>
+        <div id="backgroundOverlay" className="offcanvas-overlay"></div>
+        <MobileMenu/>
         <Header siteTitle={data.site.siteMetadata.title} />
         <main className="responsive-text">{children}</main>
         <Footer/>

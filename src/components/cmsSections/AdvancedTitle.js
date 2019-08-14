@@ -1,6 +1,4 @@
 import React from "react"
-import HomeImage from "../../assets/img/home.jpg";
-import HomeImageXs from "../../assets/img/home-xs.jpg";
 
 const AdvancedTitle = () => (
 	<section className="section section-inverse section-hero bg-pattern section-hero-pattern">
