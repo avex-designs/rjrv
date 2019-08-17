@@ -14,10 +14,10 @@ import TestimonialsBlock from "../components/sections/TestimonialsBlock";
 import BlogPostsBlock from "../components/sections/BlogPostsBlock";
 
 
-const IndexPage = () => (
+const IndexPage = (data) => (
 	<Layout>
 		<SEO title="Home"/>
-		<HeroBlock/>
+		<HeroBlock data={data.data.contentfulLandingPage}/>
 		<QuoteBlock/>
 		<TextAreaBlock/>
 		<ImageLeftBlock/>
@@ -29,3 +29,29 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+export const pageQuery = graphql`
+query MyQuery {
+  site {
+    siteMetadata {
+      title
+      description
+    }
+  }
+  contentfulLandingPage {
+    heroPreTitle
+    heroTitle {
+      heroTitle
+    }
+    heroImage {
+      file {
+        url
+      }
+      fixed(width: 10) {
+        src
+      }
+    }
+  }
+}
+
+`;
