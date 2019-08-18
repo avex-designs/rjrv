@@ -25,14 +25,14 @@ const Menu = () => {
         </button>
         <ul className="rjrv-menu-mobile rjrv-condensed rjrv-menu-mobile-pattern">
             <li className="mobile-has-sub-menu">
-                <a className="mobile-parent-sub-menu">About</a>
+                <span className="mobile-parent-sub-menu">About</span>
                 <ul>
                     <li><Link to="/about/who-we-are">Who We Are</Link></li>
                     <li><Link to="/about/leadership">Leadership</Link></li>
                 </ul>
             </li>
             <li className="mobile-has-sub-menu">
-                <a className="mobile-parent-sub-menu">Products</a>
+                <span className="mobile-parent-sub-menu">Products</span>
                 <ul>
                     <li><Link to="/products/vapor">Vapor</Link></li>
                     <li><Link to="/products/oral">Oral</Link></li>

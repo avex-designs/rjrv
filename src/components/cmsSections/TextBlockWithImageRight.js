@@ -8,7 +8,7 @@ const TextBlockWithImageRight = () => (
 					<div className="row align-items-center">
 						<div className="col-12 col-md-6 order-md-2">
 							<div className="rjrv-placeholder rjrv-placeholder-sm" data-large="/assets/img/rachel.jpg">
-								<img src="/assets/img/rachel-xs.jpg" className="img-small" />
+								{/*<img src="/assets/img/rachel-xs.jpg" className="img-small" />*/}
 								<div style={{paddingBottom: '66.6%'}}></div>
 							</div>
 						</div>

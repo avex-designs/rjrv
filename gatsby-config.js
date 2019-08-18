@@ -27,13 +27,13 @@ module.exports = {
         icon: `src/assets/img/rjrv-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
+    /*{
         resolve: `gatsby-plugin-routes`,
         options: {
             // this is the path to your routes configuration file
             path: `${__dirname}/src/routes.js`,
         },
-    },
+    },*/
     {
         resolve: `gatsby-source-contentful`,
         options: {

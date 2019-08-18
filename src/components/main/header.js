@@ -26,14 +26,14 @@ const Header  = () => {
 						{/*<!-- Desktop Menu -->*/}
                         <ul className="align-items-center rjrv-menu rjrv-condensed d-none d-sm-flex mr-md-5">
                             <li className="has-sub-menu">
-                                <a>About</a>
+                                <span>About</span>
                                 <ul>
                                     <li><Link to="/about/who-we-are">Who We Are</Link></li>
                                     <li><Link to="/about/leadership">Leadership</Link></li>
                                 </ul>
                             </li>
                             <li className="has-sub-menu">
-                                <a>Products</a>
+                                <span>Products</span>
                                 <ul>
                                     <li><Link to="/products/vapor">Vapor</Link></li>
                                     <li><Link to="/products/oral">Oral</Link></li>

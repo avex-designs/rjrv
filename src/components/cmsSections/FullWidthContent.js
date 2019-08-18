@@ -13,9 +13,9 @@ const FullWidthContent = () => (
 					<p>In so doing, RJRVC, as a matter of principle, conducts its expenditure contracting activities with due regard to applicable laws, regulations, international agreements and conventions, internal policies and competitive tendering processes. RJRVC does this in such a way as to convey its high standards of professionalism and business ethics to the external community.</p>
 					<p>For more information on related laws and information on requirements in doing business with a tobacco company, or to register to express your interest in doing business with RJRVC, please visit the following links:</p>
 					<ul className="mb-3 mt-3">
-						<li className="text-underline"><a href="https://rjrt.com/wp-content/uploads/2018/12/2018-BAT-Group-Supplier-Code-of-Conduct_FINAL-003.pdf" target="_blank" title="BAT Supplier Code of Conduct">BAT Supplier Code of Conduct</a></li>
-						<li className="text-underline"><a href="https://service.ariba.com/Sourcing.aw/124992007/aw?awh=r&awssk=o4MluP4H&dard=1" target="_blank" title="Supplier Login and New Supplier Registration">Supplier Login and New Supplier Registration</a></li>
-						<li className="text-underline"><a href="http://sustainability.reynoldsamerican.com/commercial-integrity/marketing-responsibility/" target="_blank" title="Responsible Marketing">Responsible Marketing</a></li>
+						<li className="text-underline"><a href="https://rjrt.com/wp-content/uploads/2018/12/2018-BAT-Group-Supplier-Code-of-Conduct_FINAL-003.pdf" target="_blank" rel="noopener noreferrer" title="BAT Supplier Code of Conduct">BAT Supplier Code of Conduct</a></li>
+						<li className="text-underline"><a href="https://service.ariba.com/Sourcing.aw/124992007/aw?awh=r&awssk=o4MluP4H&dard=1" target="_blank" rel="noopener noreferrer" title="Supplier Login and New Supplier Registration">Supplier Login and New Supplier Registration</a></li>
+						<li className="text-underline"><a href="http://sustainability.reynoldsamerican.com/commercial-integrity/marketing-responsibility/" target="_blank" rel="noopener noreferrer" title="Responsible Marketing">Responsible Marketing</a></li>
 					</ul>
 					<h2>Sourcing Suppliers</h2>
 					<p>We value relationships with our suppliers. As we source goods and services, we rely on the professionalism and expertise that suppliers provide. Suppliers play an essential role in obtaining continuous improvements in quality, price and service levels.</p>

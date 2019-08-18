@@ -5,8 +5,56 @@
  */
 
 // You can delete this file if you're not using it
+const path = require(`path`);
+const slash = require(`slash`);
+
 
 module.exports = {
+	createPages: async ({graphql, actions}) => {
+		const {createPage} = actions;
+		const response = await graphql(`
+			 {
+				posts: allContentfulBlogSingle {
+					edges {
+						node {
+							slug
+						}
+					}
+					totalCount
+				}
+			}
+        `);
+		const mediaSingle = path.resolve('./src/templates/media_single.js');
+		const media = path.resolve("./src/templates/media.js");
+
+		//number of posts/careers per page
+		const postsPerPage = 1;
+		const numPagesPosts = response.data.posts.totalCount;
+		const totalPages = Math.ceil(numPagesPosts / postsPerPage);
+		for (let i = 0; i < totalPages; i++) {
+			createPage({
+				path: i === 0 ? `/media` : `/media/${i + 1}`,
+				component: slash(media),
+				context: {
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+					numPagesPosts,
+					currentPage: i + 1
+				}
+			});
+		}
+		response.data.posts.edges.forEach((edge) => {
+			createPage({
+				path: `/media/${edge.node.slug}/`,
+				component: slash(mediaSingle),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
+
+
+	},
 	sourceNodes({actions}) {
 		const {createTypes} = actions;
 		const typeDefs = `
@@ -16,8 +64,17 @@ module.exports = {
             	alignment: contentfulTextAreaContentAlignmentTextNode,
             	highligted: Boolean
             }
+            type ContentfulImageTextBlock implements Node {
+            	title: String,
+            	bgColor: String,
+            	text: contentfulImageTextBlockTextRichTextNode,
+            	image: ContentfulAsset,
+            	imagePosition: contentfulImageTextBlockImagePositionTextNode,
+            	urlText: String, 
+            	url: String
+            }
 			type ContentfulTestimonial implements Node {
-            	testimonialText: contentfulTestimonialTestimonialTextRichTextNode,
+            	testimonialText: contentfulTestimonialTestimonialTextTextNode,
             	testimonialAuthor: String,
             	bgColor: String
             }
@@ -29,15 +86,7 @@ module.exports = {
             	bgColor: String,
             	imagePosition: contentfulLeadershipBlockImagePositionTextNode
             }
-            type ContentfulImageTextBlock implements Node {
-            	title: String,
-            	bgColor: String,
-            	text: contentfulImageTextBlockTextRichTextNode,
-            	image: ContentfulAsset,
-            	imagePosition: contentfulImageTextBlockImagePositionTextNode,
-            	urlText: String, 
-            	url: String
-            }
+            
             type ContentfulCmsOption1 implements Node {
             	title: String,
             	slug: String,
@@ -86,7 +135,7 @@ module.exports = {
             	quoteText: contentfulLandingPageQuoteTextTextNode,
             	quoteAuthor: String,
             	textArea: ContentfulTextAreaContent,
-            	imageTextBlocks: ContentfulImageTextBlock,
+            	imageTextBlocks: [ContentfulImageTextBlock],
             	testimonial: ContentfulTestimonial
             }
             
@@ -110,11 +159,13 @@ module.exports = {
             	bgPattern: ContentfulAsset,
             	thumbnailImage: ContentfulAsset,
             	publishedDate: Date,
-            	externalUrl: String,         	
+            	externalUrl: String,     
+            	fileAttachment: ContentfulAsset
             }     
         `;
 
 		createTypes(typeDefs);
 	}
-
 }
+
+

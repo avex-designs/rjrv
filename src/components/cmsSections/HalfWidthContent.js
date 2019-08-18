@@ -17,8 +17,8 @@ const HalfWidthContent = () => (
 					<h3 className="mt-5 mb-3">Adult Tobacco Consumers</h3>
 					<p>If you are an adult who has a question about one of RJRVC products, product use and warning information is available online. Information is also available by calling the toll-free number printed on the product package and repeated below. RJRVC's direct-to-consumer brand communications are intended for age 21+ tobacco consumers only, so it is our policy not to respond to questions from minors.</p>
 
-					<p className="m-0"><span>VUSE products: <a href="tel:+18776148873">877-614-VUSE (8873)</a>, <a href="//www.vusevapor.com" target="_blank">www.vusevapor.com</a></span></p>
-					<p className="m-0"><span>REVEL products: <a href="tel:+18667577446">866-757-7446</a>, <a href="//www.thatsrevel.com" target="_blank">www.thatsrevel.com</a></span></p>
+					<p className="m-0"><span>VUSE products: <a href="tel:+18776148873">877-614-VUSE (8873)</a>, <a href="//www.vusevapor.com" target="_blank" rel="noopener noreferrer" >www.vusevapor.com</a></span></p>
+					<p className="m-0"><span>REVEL products: <a href="tel:+18667577446">866-757-7446</a>, <a href="//www.thatsrevel.com" target="_blank" rel="noopener noreferrer" >www.thatsrevel.com</a></span></p>
 
 				</div>
 

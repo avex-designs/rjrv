@@ -1,34 +1,108 @@
 import React from "react"
+import {Link} from "gatsby"
+import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
 
-const BlogPost = () => (
-	<article className="col-12 col-md-6 pb-5 pr-lg-5">
-		<a className="rjrv-condensed text-uppercase text-spacing arrow-right"
-		   href="/assets/pdf/VELO_Press_Briefing_07.08.19_Final_0831.pdf" target="_blank">
-			<div className="rjrv-placeholder" data-large="/assets/img/media-10.png">
-				<img src="/assets/img/media-10-xs.png"
-					 alt="R.J. Reynolds Vapor Company Announces VELO – Expanding Emerging Modern Oral Portfolio and Choice for Adult Tobacco Consumer"
-					 className="img-small"/>
-				<div style={{paddingBottom: '66.6%'}}></div>
-			</div>
-		</a>
-		<p className="mt-5 rjrv-condensed">
-			<small>
-				<time className="text-uppercase text-spacing text-gold text-decoration"
-					  dateTime="2019-03-27">July 8, 2019
-				</time>
-			</small>
-		</p>
-		<h3>R.J. Reynolds Vapor Company Announces VELO – Expanding Emerging Modern Oral Portfolio and
-			Choice for Adult Tobacco Consumer</h3>
-		<p>Company expands the rollout of VELO as part of its innovative Modern Oral category to meet
-			the evolving preferences of today’s adult tobacco consumer with simple, hassle free, oral
-			nicotine products</p>
-		<a className="rjrv-condensed text-uppercase text-spacing"
-		   href="/assets/pdf/VELO_Press_Briefing_07.08.19_Final_0831.pdf" target="_blank">
-			<small className="arrow-right">Read article</small>
-		</a>
-	</article>
-)
+const BlogPost = (props) => {
+	let post = props.data;
+	let link = (link) => {
+		if(link.externalUrl){
+			return (
+				<a className="rjrv-condensed text-uppercase text-spacing"
+				   href={link.externalUrl} target="__blank" rel="noopener noreferrer">
+					<small className="arrow-right">Read article</small>
+				</a>
+			)
+		}else if(link.fileAttachment){
+			return (
+				<a className="rjrv-condensed text-uppercase text-spacing"
+					  href={link.fileAttachment.file.url} target="__blank" rel="noopener noreferrer">
+					<small className="arrow-right">Read article</small>
+				</a>
+			)
+		}else{
+			return (
+				<Link className="rjrv-condensed text-uppercase text-spacing"
+					  to={`/media/${link.slug}`}>
+					<small className="arrow-right">Read article</small>
+				</Link>
+			)
+		}
+	};
+	let img = (data) => {
+		if(data.thumbnailImage){
+			if(data.externalUrl){
+				return (
+					<a className="rjrv-condensed text-uppercase text-spacing arrow-right"
+					   href={data.externalUrl} target="_blank">
+						<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
+							<img src={data.thumbnailImage.fixed.src}
+								 alt={data.title}
+								 className="img-small"/>
+							<div style={{paddingBottom: '66.6%'}}></div>
+						</div>
+					</a>
+				)
+			}else if(data.fileAttachment){
+				return (
+					<a className="rjrv-condensed text-uppercase text-spacing arrow-right"
+						  href={data.fileAttachment.file.url} target="_blank">
+						<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
+							<img src={data.thumbnailImage.fixed.src}
+								 alt={data.title}
+								 className="img-small"/>
+							<div style={{paddingBottom: '66.6%'}}></div>
+						</div>
+					</a>
+				)
+			}else{
+				return (
+					<Link className="rjrv-condensed text-uppercase text-spacing arrow-right"
+						  to={`/media/${data.slug}`} target="_blank">
+						<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
+							<img src={data.thumbnailImage.fixed.src}
+								 alt={data.title}
+								 className="img-small"/>
+							<div style={{paddingBottom: '66.6%'}}></div>
+						</div>
+					</Link>
+				)
+			}
+		}
+	};
+	let date = (date) => {
+		if(date.publishedDate){
+			return (
+				<p className="mt-5 rjrv-condensed">
+					<small>
+						<time className="text-uppercase text-spacing text-gold text-decoration"
+							  dateTime={date.publishedDate}>{date.publishedDate}
+						</time>
+					</small>
+				</p>
+			)
+		}else{
+			return (
+				<p className="mt-5 rjrv-condensed">
+					<small>
+						<time className="text-uppercase text-spacing text-gold text-decoration"
+							  dateTime={date.createdAt}>{date.createdAt}
+						</time>
+					</small>
+				</p>
+			)
+		}
+
+	};
+	return (
+		<article className="col-12 col-md-6 pb-5 pr-lg-5">
+			{img(post)}
+			{date(post)}
+			<h3>{post.title}</h3>
+			{documentToReactComponents(post.text.json)}
+			{link(post)}
+		</article>
+	)
+};
 
 
 export default BlogPost

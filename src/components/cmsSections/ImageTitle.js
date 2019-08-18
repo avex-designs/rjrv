@@ -6,7 +6,7 @@ const ImageTitle = () => (
 			<div className="row align-items-center">
 				<div className="col-12 col-sm-7 col-xl-6 p-0 order-sm-2">
 					<div className="rjrv-placeholder" data-large="/assets/img/suppliers.jpg">
-						<img src="/assets/img/suppliers-xs.jpg" className="img-small" />
+						{/*<img src="/assets/img/suppliers-xs.jpg" className="img-small" />*/}
 						<div style={{paddingBottom: '66.6%'}}></div>
 					</div>
 				</div>
