@@ -1,12 +1,12 @@
 window.onload = function() {
 
-    var placeholder = document.querySelectorAll('.rjrv-placeholder');
+
 
     var slideMenu = document.querySelector('.offcanvas-slide-menu');
     var overlay = document.querySelector('.offcanvas-overlay');
     var openButton = document.querySelector('.target-burger');
-    
 
+	var placeholder = document.querySelectorAll('.rjrv-placeholder');
     placeholder.forEach(function(element){
         var small = element.querySelector('.img-small');
 

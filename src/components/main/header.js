@@ -2,8 +2,8 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header  = () => {
-	let toggleMenu = () => {
+class Header  extends React.Component {
+	toggleMenu = () => {
 		let btn = document.querySelectorAll('.target-burger');
 		let menu = document.querySelector('.offcanvas-slide-menu');
 		let offCanvas = document.querySelector('.offcanvas-overlay');
@@ -16,6 +16,35 @@ const Header  = () => {
 		menu.classList.toggle('active');
 	};
 
+	progressiveImg = () => {
+		let placeholder = document.querySelectorAll('.rjrv-placeholder');
+		placeholder.forEach(function(element){
+			let small = element.querySelector('.img-small');
+
+			// 1: load small image and show it
+			let img = new Image();
+			img.src = small.src;
+			img.onload = function () {
+				small.classList.add('loaded');
+			};
+
+			// 2: load large image
+			let imgLarge = new Image();
+			imgLarge.src = element.dataset.large;
+			imgLarge.onload = function () {
+				imgLarge.classList.add('loaded');
+			};
+
+			element.appendChild(imgLarge);
+
+		});
+	};
+
+	componentDidMount(){
+		this.progressiveImg();
+	}
+
+	render(){
 		return (
             <header className="rjrv-l-header">
                 <div className="container container-large">
@@ -26,14 +55,14 @@ const Header  = () => {
 						{/*<!-- Desktop Menu -->*/}
                         <ul className="align-items-center rjrv-menu rjrv-condensed d-none d-sm-flex mr-md-5">
                             <li className="has-sub-menu">
-                                <span>About</span>
+                                <div>About</div>
                                 <ul>
                                     <li><Link to="/about/who-we-are">Who We Are</Link></li>
                                     <li><Link to="/about/leadership">Leadership</Link></li>
                                 </ul>
                             </li>
                             <li className="has-sub-menu">
-                                <span>Products</span>
+                                <div>Products</div>
                                 <ul>
                                     <li><Link to="/products/vapor">Vapor</Link></li>
                                     <li><Link to="/products/oral">Oral</Link></li>
@@ -49,7 +78,7 @@ const Header  = () => {
                         </ul>
 
 						{/*<!-- Trigger Mobile Menu -->*/}
-                        <button className="target-burger d-sm-none" onClick={toggleMenu}>
+                        <button className="target-burger d-sm-none" onClick={this.toggleMenu}>
             <span className="buns">
               <span className="bun"></span>
               <span className="bun"></span>
@@ -59,6 +88,7 @@ const Header  = () => {
                 </div>
             </header>
 		)
+	}
 
 }
 

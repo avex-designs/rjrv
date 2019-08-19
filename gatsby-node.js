@@ -18,6 +18,12 @@ module.exports = {
 					edges {
 						node {
 							slug
+							externalUrl
+							fileAttachment{
+								file{
+								  url
+								}
+							 }							
 						}
 					}
 					totalCount
@@ -44,13 +50,17 @@ module.exports = {
 			});
 		}
 		response.data.posts.edges.forEach((edge) => {
-			createPage({
-				path: `/media/${edge.node.slug}/`,
-				component: slash(mediaSingle),
-				context: {
-					slug: edge.node.slug
+			if(!edge.node.externalUrl){
+				if(!edge.node.fileAttachment) {
+					createPage({
+						path: `/media/${edge.node.slug}/`,
+						component: slash(mediaSingle),
+						context: {
+							slug: edge.node.slug
+						}
+					});
 				}
-			});
+			}
 		});
 
 
