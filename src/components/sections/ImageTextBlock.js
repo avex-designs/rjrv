@@ -1,6 +1,7 @@
 import React from "react"
 import {Link} from "gatsby"
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
+import Img from "gatsby-image"
 
 const ImageLeftBlock = (props) => {
 	let blockData = props.data;
@@ -19,12 +20,15 @@ const ImageLeftBlock = (props) => {
 	};
 	let img = (data) => {
 		if (data.image) {
+			let offset = '';
+			let offsetImg = '';
+			if(data.imagePosition && data.imagePosition.imagePosition === 'right'){
+				offset = 'offset-md-1 order-md-2';
+				offsetImg = 'rjrv-placeholder-m0';
+			}
 			return (
-				<div className="col-12 col-md-6">
-					<div className="rjrv-placeholder rjrv-placeholder-sm" data-large={data.image.file.url}>
-						<img src={data.image.fixed.src} className="img-small" alt={data.title}/>
-						<div style={{paddingBottom: '66.6%'}}></div>
-					</div>
+				<div className={`col-12 col-md-6 ${offset}`}>
+					<Img sizes={data.image.sizes} className={`rjrv-placeholder rjrv-placeholder-sm ${offsetImg}`}/>
 				</div>
 			)
 		}

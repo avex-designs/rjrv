@@ -33,7 +33,7 @@ const IndexPage = (data) => {
 export default IndexPage
 
 export const pageQuery = graphql`
-query MyQuery {
+query HomeQuery {
   site {
     siteMetadata {
       title
@@ -55,13 +55,10 @@ query MyQuery {
       }
       publishedDate(formatString: "MMMM DD, YYYY")
       thumbnailImage {
-        file {
-          url
+         sizes(maxWidth: 1200) {
+				...GatsbyContentfulSizes
+			  }
         }
-        fixed(width: 10) {
-          src
-        }
-      }
     }
   }
   home: contentfulLandingPage {
@@ -72,12 +69,9 @@ query MyQuery {
     heroLinkText
     heroUrl
     heroImage {
-      file {
-        url
-      }
-      fixed(width: 10) {
-        src
-      }
+      sizes(maxWidth: 1200) {
+				...GatsbyContentfulSizes
+			  }
     }
     quoteText {
       quoteText
@@ -111,12 +105,9 @@ query MyQuery {
       url
       urlText
       image {
-        file {
-          url
-        }
-        fixed(width: 10) {
-          src
-        }
+       sizes(maxWidth: 1200) {
+				...GatsbyContentfulSizes
+			  }
       }
     }
   }

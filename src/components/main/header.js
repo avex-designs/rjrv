@@ -41,7 +41,7 @@ class Header  extends React.Component {
 	};
 
 	componentDidMount(){
-		this.progressiveImg();
+		/*this.progressiveImg();*/
 	}
 
 	render(){

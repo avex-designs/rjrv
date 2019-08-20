@@ -34,7 +34,7 @@ module.exports = {
 		const media = path.resolve("./src/templates/media.js");
 
 		//number of posts/careers per page
-		const postsPerPage = 1;
+		const postsPerPage = 4;
 		const numPagesPosts = response.data.posts.totalCount;
 		const totalPages = Math.ceil(numPagesPosts / postsPerPage);
 		for (let i = 0; i < totalPages; i++) {
@@ -63,6 +63,97 @@ module.exports = {
 			}
 		});
 
+		const cms1 = path.resolve("./src/templates/cms1.js");
+		const cms1Response = await graphql(`
+			 {
+				allContentfulCmsOption1 {
+					edges {
+					  node {
+						slug
+					  }
+					}
+				  }
+			}
+        `);
+
+		cms1Response.data.allContentfulCmsOption1.edges.forEach((edge) => {
+			createPage({
+				path: edge.node.slug,
+				component: slash(cms1),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
+
+		const cms2 = path.resolve("./src/templates/cms2.js");
+		const cms2Response = await graphql(`
+			 {
+				allContentfulCmsOption2 {
+					edges {
+					  node {
+						slug						
+					  }
+					}
+				  }
+			}
+        `);
+
+		cms2Response.data.allContentfulCmsOption2.edges.forEach((edge) => {
+			createPage({
+				path: edge.node.slug,
+				component: slash(cms2),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
+
+		const cms3 = path.resolve("./src/templates/cms3.js");
+		const cms3Response = await graphql(`
+			 {
+				allContentfulCmsOption3 {
+					edges {
+					  node {
+						slug
+					  }
+					}
+				  }
+			}
+        `);
+
+		cms3Response.data.allContentfulCmsOption3.edges.forEach((edge) => {
+			createPage({
+				path: edge.node.slug,
+				component: slash(cms3),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
+
+		const cms4 = path.resolve("./src/templates/cms4.js");
+		const cms4Response = await graphql(`
+			 {
+				allContentfulCmsOption4 {
+					edges {
+					  node {
+						slug
+					  }
+					}
+				  }
+			}
+        `);
+
+		cms4Response.data.allContentfulCmsOption4.edges.forEach((edge) => {
+			createPage({
+				path: edge.node.slug,
+				component: slash(cms4),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
 
 	},
 	sourceNodes({actions}) {
@@ -126,7 +217,7 @@ module.exports = {
             	slug: String,
             	bgColor: String,
             	bgPattern: ContentfulAsset,
-            	blocks: ContentfulLeadershipBlock
+            	blocks: [ContentfulLeadershipBlock]
             }
             type ContentfulCmsOption5 implements Node {
             	preTitle: String,

@@ -30,19 +30,16 @@ export const query = graphql`
         json
       }
       thumbnailImage {
-        file {
-          url
+          sizes(maxWidth: 1200){
+		  	...GatsbyContentfulSizes
+		  }
         }
-        fixed(width: 10) {
-		  src
-		}
-      }
       createdAt(formatString: "MMMM DD, YYYY")
 	  bgColor
 	  bgPattern{
-	  	  file {
-			url
-		  }
+	  	  fluid(maxWidth: 1200) {
+				src
+			  }
 	  }
 	  publishedDate(formatString: "MMMM DD, YYYY")
     }

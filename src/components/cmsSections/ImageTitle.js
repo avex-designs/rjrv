@@ -1,15 +1,13 @@
 import React from "react"
+import Img from "gatsby-image"
 
 const ImageTitle = (props) => {
 	let data = props.data;
-	console.log(data);
+
 	let img = (data) => {
 		if(data.thumbnailImage){
 			return (
-				<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
-					<img src={data.thumbnailImage.fixed.src} className="img-small" alt={data.title}/>
-					<div style={{paddingBottom: '66.6%'}}></div>
-				</div>
+				<Img sizes={data.thumbnailImage.sizes} className="rjrv-placeholder"/>
 			)
 		}
 	};
@@ -19,7 +17,7 @@ const ImageTitle = (props) => {
 			bg.backgroundColor = bgData.bgColor;
 		}
 		if(bgData.bgPattern){
-			bg.backgroundImage = `url(${bgData.bgPattern.file.url})`;
+			bg.backgroundImage = `url(${bgData.bgPattern.fluid.src})`;
 		}
 		return bg;
 	};

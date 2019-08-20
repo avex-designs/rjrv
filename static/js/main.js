@@ -6,7 +6,7 @@ window.onload = function() {
     var overlay = document.querySelector('.offcanvas-overlay');
     var openButton = document.querySelector('.target-burger');
 
-	var placeholder = document.querySelectorAll('.rjrv-placeholder');
+	/*var placeholder = document.querySelectorAll('.rjrv-placeholder');
     placeholder.forEach(function(element){
         var small = element.querySelector('.img-small');
 
@@ -26,7 +26,7 @@ window.onload = function() {
 
         element.appendChild(imgLarge);
 
-    });
+    });*/
 
     // Mobile Menu
     document.onclick = function(e){

@@ -1,5 +1,6 @@
 import React from "react"
 import {Link} from "gatsby"
+import Img from "gatsby-image"
 
 const HeroBlock = (props) => {
 	let hero = props.data;
@@ -14,11 +15,7 @@ const HeroBlock = (props) => {
 			<div className="container container-large pt-sm-5">
 				<div className="row align-items-center mb-sm-5 pb-sm-5">
 					<div className="col-12 col-sm-6 col-xl-6 p-0 order-sm-2 offset-sm-6">
-						<div className="rjrv-placeholder rjrv-placeholder-absolute"
-							 data-large={hero.heroImage.file.url}>
-							<img src={hero.heroImage.fixed.src} alt={hero.heroTitle.heroTitle} className="img-small"/>
-							<div style={{paddingBottom: '66.6%'}}></div>
-						</div>
+						<Img sizes={hero.heroImage.sizes} className="rjrv-placeholder rjrv-placeholder-absolute" style={{position: 'absolute'}}/>
 					</div>
 					<div className="col-12 col-sm-10 mt-lg-5 pt-lg-5 mt-5 mb-5">
 						<div className="rjrv-decoration-block"><span

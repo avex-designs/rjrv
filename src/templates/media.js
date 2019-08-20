@@ -16,13 +16,13 @@ const Media = (data) => (
 export default Media
 
 export const query = graphql`
-  query MediaQuery($skip: Int!) {
+  query MediaQuery($skip: Int!, $limit: Int!) {
   site {
       siteMetadata {
         title
       }
     }
-	posts: allContentfulBlogSingle(limit: 2, skip: $skip,  sort: {order: DESC, fields: createdAt}) {
+	posts: allContentfulBlogSingle(limit: $limit, skip: $skip,  sort: {order: DESC, fields: publishedDate}) {
 		nodes {
 		  title
 		  slug
@@ -31,13 +31,10 @@ export const query = graphql`
 		  }
 		  publishedDate(formatString: "MMMM DD, YYYY")
 		  thumbnailImage {
-			file {
-			  url
+			  sizes(maxWidth: 1200) {
+				...GatsbyContentfulSizes
+			  }
 			}
-			fixed(width: 10) {
-			  src
-			}
-		  }
 		  externalUrl
 		  fileAttachment {
 			file {
@@ -47,9 +44,9 @@ export const query = graphql`
 		  createdAt(formatString: "MMMM DD, YYYY")
 		  bgColor
 		  bgPattern {
-			file {
-			  url
-			}
+			fluid(maxWidth: 1200) {
+				src
+			  }
 		  }
 		}
 		totalCount
@@ -72,12 +69,9 @@ export const query = graphql`
     contactBlockEmail
     contactBlockDescription
     thumbnailImage {
-      file {
-        url
-      }
-      fixed(width: 10) {
-        src
-      }
+      sizes(maxWidth: 1200) {
+				...GatsbyContentfulSizes
+		}
     }
   }
 }

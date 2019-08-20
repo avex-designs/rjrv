@@ -1,6 +1,7 @@
 import React from "react"
 import {Link} from "gatsby"
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
+import Img from "gatsby-image"
 
 const BlogPost = (props) => {
 	let post = props.data;
@@ -33,37 +34,22 @@ const BlogPost = (props) => {
 			if(data.externalUrl){
 				return (
 					<a className="rjrv-condensed text-uppercase text-spacing arrow-right"
-					   href={data.externalUrl} target="_blank">
-						<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
-							<img src={data.thumbnailImage.fixed.src}
-								 alt={data.title}
-								 className="img-small"/>
-							<div style={{paddingBottom: '66.6%'}}></div>
-						</div>
+					   href={data.externalUrl} target="_blank" rel="noopener noreferrer">
+						<Img sizes={data.thumbnailImage.sizes} className="rjrv-placeholder"/>
 					</a>
 				)
 			}else if(data.fileAttachment){
 				return (
 					<a className="rjrv-condensed text-uppercase text-spacing arrow-right"
-						  href={data.fileAttachment.file.url} target="_blank">
-						<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
-							<img src={data.thumbnailImage.fixed.src}
-								 alt={data.title}
-								 className="img-small"/>
-							<div style={{paddingBottom: '66.6%'}}></div>
-						</div>
+						  href={data.fileAttachment.file.url} target="_blank" rel="noopener noreferrer">
+						<Img sizes={data.thumbnailImage.sizes} className="rjrv-placeholder"/>
 					</a>
 				)
 			}else{
 				return (
 					<Link className="rjrv-condensed text-uppercase text-spacing arrow-right"
-						  to={`/media/${data.slug}`} target="_blank">
-						<div className="rjrv-placeholder" data-large={data.thumbnailImage.file.url}>
-							<img src={data.thumbnailImage.fixed.src}
-								 alt={data.title}
-								 className="img-small"/>
-							<div style={{paddingBottom: '66.6%'}}></div>
-						</div>
+						  to={`/media/${data.slug}`} rel="noopener noreferrer">
+						<Img sizes={data.thumbnailImage.sizes} className="rjrv-placeholder"/>
 					</Link>
 				)
 			}
