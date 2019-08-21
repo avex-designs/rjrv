@@ -48,8 +48,10 @@ export const query = graphql`
 		  positions
 		  title
 		  text {
-			text
-		  }
+			  childMarkdownRemark {
+				html
+			  }
+			}
 		  image {
 			sizes(maxWidth: 1200) {
 			  ...GatsbyContentfulSizes

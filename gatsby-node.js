@@ -34,7 +34,7 @@ module.exports = {
 		const media = path.resolve("./src/templates/media.js");
 
 		//number of posts/careers per page
-		const postsPerPage = 4;
+		const postsPerPage = 2;
 		const numPagesPosts = response.data.posts.totalCount;
 		const totalPages = Math.ceil(numPagesPosts / postsPerPage);
 		for (let i = 0; i < totalPages; i++) {
@@ -155,6 +155,52 @@ module.exports = {
 			});
 		});
 
+		const cms5 = path.resolve("./src/templates/cms5.js");
+		const cms5Response = await graphql(`
+			 {
+				allContentfulCmsOption5 {
+					edges {
+					  node {
+						slug
+					  }
+					}
+				  }
+			}
+        `);
+
+		cms5Response.data.allContentfulCmsOption5.edges.forEach((edge) => {
+			createPage({
+				path: edge.node.slug,
+				component: slash(cms5),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
+
+		const product = path.resolve("./src/templates/product_single.js");
+		const productResponse = await graphql(`
+			 {
+				allContentfulProducts {
+					edges {
+					  node {
+						slug
+					  }
+					}
+				  }
+			}
+        `);
+
+		productResponse.data.allContentfulProducts.edges.forEach((edge) => {
+			createPage({
+				path: `/products/${edge.node.slug}`,
+				component: slash(product),
+				context: {
+					slug: edge.node.slug
+				}
+			});
+		});
+
 	},
 	sourceNodes({actions}) {
 		const {createTypes} = actions;
@@ -225,7 +271,7 @@ module.exports = {
             	slug: String,
             	titleShortText: contentfulCmsOption5TitleShortTextTextNode,
             	linkText: String,
-            	imageTextBlock: ContentfulImageTextBlock,
+            	imageTextBlock: [ContentfulImageTextBlock],
             	textAreaBlock: ContentfulTextAreaContent
             }
             type ContentfulLandingPage implements Node {

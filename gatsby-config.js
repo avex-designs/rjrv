@@ -27,6 +27,21 @@ module.exports = {
         icon: `src/assets/img/rjrv-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+        resolve: `gatsby-transformer-remark`,
+        options: {
+            // CommonMark mode (default: true)
+            commonmark: true,
+            // Footnotes mode (default: true)
+            footnotes: true,
+            // Pedantic mode (default: true)
+            pedantic: true,
+            // GitHub Flavored Markdown mode (default: true)
+            gfm: true,
+            // Plugins configs
+            plugins: [],
+        },
+    },
     /*{
         resolve: `gatsby-plugin-routes`,
         options: {

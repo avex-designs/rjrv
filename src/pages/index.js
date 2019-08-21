@@ -85,6 +85,7 @@ query HomeQuery {
       text {
         text
       }
+      highligted
     }
     testimonial {
       bgColor
