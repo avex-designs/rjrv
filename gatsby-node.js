@@ -34,7 +34,7 @@ module.exports = {
 		const media = path.resolve("./src/templates/media.js");
 
 		//number of posts/careers per page
-		const postsPerPage = 2;
+		const postsPerPage = 4;
 		const numPagesPosts = response.data.posts.totalCount;
 		const totalPages = Math.ceil(numPagesPosts / postsPerPage);
 		for (let i = 0; i < totalPages; i++) {
@@ -309,6 +309,15 @@ module.exports = {
             	externalUrl: String,     
             	fileAttachment: ContentfulAsset
             }     
+            type ContentfulNavigationMenu implements Node {
+            	menuItems: [ContentfulMenuItem]
+            }
+            type ContentfulMenuItem implements Node {
+            	title: String,
+            	link: String,
+            	subMenu: [ContentfulMenuItem]
+            }	
+            
         `;
 
 		createTypes(typeDefs);

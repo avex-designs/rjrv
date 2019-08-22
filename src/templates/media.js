@@ -70,6 +70,8 @@ const Media = (data) => {
 				</div>
 			</div>
 			</PaginationWrapper>
+		}else{
+			return null;
 		}
 
 	};

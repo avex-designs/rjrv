@@ -1,14 +1,15 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import {Link, graphql, StaticQuery} from "gatsby"
+import PropTypes from "prop-types"
 
-class Header  extends React.Component {
+
+class Header extends React.Component {
 	toggleMenu = () => {
 		let btn = document.querySelectorAll('.target-burger');
 		let menu = document.querySelector('.offcanvas-slide-menu');
 		let offCanvas = document.querySelector('.offcanvas-overlay');
 
-		btn.forEach(function(element){
+		btn.forEach(function (element) {
 			element.classList.toggle('toggled');
 		});
 
@@ -16,88 +17,90 @@ class Header  extends React.Component {
 		menu.classList.toggle('active');
 	};
 
-	progressiveImg = () => {
-		let placeholder = document.querySelectorAll('.rjrv-placeholder');
-		placeholder.forEach(function(element){
-			let small = element.querySelector('.img-small');
-
-			// 1: load small image and show it
-			let img = new Image();
-			img.src = small.src;
-			img.onload = function () {
-				small.classList.add('loaded');
-			};
-
-			// 2: load large image
-			let imgLarge = new Image();
-			imgLarge.src = element.dataset.large;
-			imgLarge.onload = function () {
-				imgLarge.classList.add('loaded');
-			};
-
-			element.appendChild(imgLarge);
-
-		});
-	};
-
-	componentDidMount(){
-		/*this.progressiveImg();*/
-	}
-
-	render(){
+	render() {
 		return (
-            <header className="rjrv-l-header">
-                <div className="container container-large">
-                    <div className="row justify-content-between">
-						{/*<!-- Logo -->*/}
-                        <Link to="/" className="rjrv-logo">RJ Reynolds Vapor</Link>
+			<StaticQuery
+				query={graphql`
+				query HeaderMenuQuery {
+				  menu: contentfulNavigationMenu(slug: {eq: "header-menu"}) {
+					menuItems {
+					  title
+					  link
+					  subMenu {
+						title
+						link
+						subMenu {
+						  title
+						  link
+						}
+					  }
+					}
+				  }
+				}
+				`}
 
-						{/*<!-- Desktop Menu -->*/}
-                        <ul className="align-items-center rjrv-menu rjrv-condensed d-none d-sm-flex mr-md-5">
-                            <li className="has-sub-menu">
-                                <div>About</div>
-                                <ul>
-                                    <li><Link to="/about/who-we-are">Who We Are</Link></li>
-                                    <li><Link to="/about/leadership">Leadership</Link></li>
-                                </ul>
-                            </li>
-                            <li className="has-sub-menu">
-                                <div>Products</div>
-                                <ul>
-                                    <li><Link to="/products/vapor">Vapor</Link></li>
-                                    <li><Link to="/products/oral">Oral</Link></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <Link to="/transforming-tobacco">Transforming Tobacco</Link>
-                            </li>
+				render={data => ( <header className="rjrv-l-header">
+					<div className="container container-large">
+						<div className="row justify-content-between">
+							{/*<!-- Logo -->*/}
+							<Link to="/" className="rjrv-logo">RJ Reynolds Vapor</Link>
 
-                            <li>
-                                <Link to="/media">Media</Link>
-                            </li>
-                        </ul>
+							{/*<!-- Desktop Menu -->*/}
+							<ul className="align-items-center rjrv-menu rjrv-condensed d-none d-sm-flex mr-md-5">
+								{
+									data.menu.menuItems.map((item, i) => {
+										if (item.subMenu) {
+											return <li className="has-sub-menu" key={i}>
+												<div>{item.title}</div>
+												<ul>
+													{item.subMenu.map((sub, subi) => {
+														if (sub.subMenu) {
+															return <li key={subi}><Link to={sub.link}>{sub.title}</Link>
+																<ul>
+																	{sub.subMenu.map((sub1, subi1) => {
+																		return <li key={subi1}><Link
+																			to={sub1.link}>{sub1.title}</Link></li>
+																	})}
+																</ul>
+															</li>
+														} else {
+															return <li key={subi}><Link to={sub.link}>{sub.title}</Link>
+															</li>
+														}
+													})}
+												</ul>
+											</li>;
+										} else {
+											return <li>
+												<Link to={item.link}>{item.title}</Link>
+											</li>
+										}
+									})
+								}
+							</ul>
 
-						{/*<!-- Trigger Mobile Menu -->*/}
-                        <button className="target-burger d-sm-none" onClick={this.toggleMenu}>
-            <span className="buns">
-              <span className="bun"></span>
-              <span className="bun"></span>
-            </span>
-                        </button>
-                    </div>
-                </div>
-            </header>
+							{/*<!-- Trigger Mobile Menu -->*/}
+							<button className="target-burger d-sm-none" onClick={this.toggleMenu}>
+								<span className="buns">
+								  <span className="bun"></span>
+								  <span className="bun"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</header> )}/>
 		)
 	}
 
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+	siteTitle: PropTypes.string,
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+	siteTitle: ``,
 }
 
-export default Header
+export default Header;
+
