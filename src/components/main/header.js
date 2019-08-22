@@ -50,15 +50,15 @@ class Header extends React.Component {
 								{
 									data.menu.menuItems.map((item, i) => {
 										if (item.subMenu) {
-											return <li className="has-sub-menu" key={i}>
+											return <li className="has-sub-menu" key={`hm-${i}`}>
 												<div>{item.title}</div>
 												<ul>
 													{item.subMenu.map((sub, subi) => {
 														if (sub.subMenu) {
-															return <li key={subi}><Link to={sub.link}>{sub.title}</Link>
+															return <li key={`hmsub1-${subi}`}><Link to={sub.link}>{sub.title}</Link>
 																<ul>
 																	{sub.subMenu.map((sub1, subi1) => {
-																		return <li key={subi1}><Link
+																		return <li key={`hmsub2-${subi1}`}><Link
 																			to={sub1.link}>{sub1.title}</Link></li>
 																	})}
 																</ul>
@@ -71,7 +71,7 @@ class Header extends React.Component {
 												</ul>
 											</li>;
 										} else {
-											return <li>
+											return <li key={`hm-${i}`}>
 												<Link to={item.link}>{item.title}</Link>
 											</li>
 										}

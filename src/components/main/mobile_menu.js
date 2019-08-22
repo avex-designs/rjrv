@@ -79,29 +79,29 @@ class Menu extends React.Component {
 							{
 								data.headermenu.menuItems.map((item, i) => {
 									if (item.subMenu) {
-										return <li className="mobile-has-sub-menu" key={i}>
+										return <li className="mobile-has-sub-menu" key={`mbm-${i}`}>
 											<div className="mobile-parent-sub-menu">{item.title}</div>
 											<ul>
 												{item.subMenu.map((sub, subi) => {
 													if (sub.subMenu) {
-														return <li key={subi} className="mobile-has-sub-menu">
+														return <li key={`mbsub1-${subi}`} className="mobile-has-sub-menu">
 															<div className="mobile-parent-sub-menu">{sub.title}</div>
 															<ul>
 																{sub.subMenu.map((sub1, subi1) => {
-																	return <li key={subi1}><Link
+																	return <li key={`mbsub2-${subi1}`}><Link
 																		to={sub1.link}>{sub1.title}</Link></li>
 																})}
 															</ul>
 														</li>
 													} else {
-														return <li key={subi}><Link to={sub.link}>{sub.title}</Link>
+														return <li key={`mbsub1-${subi}`}><Link to={sub.link}>{sub.title}</Link>
 														</li>
 													}
 												})}
 											</ul>
 										</li>;
 									} else {
-										return <li>
+										return <li key={`mbm-${i}`}>
 											<Link to={item.link}>{item.title}</Link>
 										</li>
 									}
@@ -111,7 +111,7 @@ class Menu extends React.Component {
 
 						<nav className="d-flex flex-column rjrv-secondary-mobile-menu rjrv-condensed">
 							{data.footermenu.menuItems.map((item, i) => {
-								return <Link to={item.link} title={item.title} rel="nofollow">{item.title}</Link>
+								return <Link to={item.link} title={item.title} rel="nofollow" key={`mbbottom-${i}`}>{item.title}</Link>
 							})}
 						</nav>
 					</div>)}/>
