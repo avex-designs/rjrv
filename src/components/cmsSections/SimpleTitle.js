@@ -5,11 +5,13 @@ const SimpleTitle = (props) => {
 
 	let bgColor = (bgData) => {
 		let bg = {};
-		if (bgData.bgColor) {
-			bg.backgroundColor = bgData.bgColor;
-		}
-		if(bgData.bgPattern){
-			bg.backgroundImage = `url(${bgData.bgPattern.fluid.src})`;
+		if(bgData){
+			if (bgData.bgColor) {
+				bg.backgroundColor = bgData.bgColor;
+			}
+			if(bgData.bgPattern){
+				bg.backgroundImage = `url(${bgData.bgPattern.fluid.src})`;
+			}
 		}
 		return bg;
 	};
