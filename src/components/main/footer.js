@@ -25,9 +25,7 @@ class Footer extends React.Component {
 									<nav
 										className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mt-5 mt-sm-0">
 										{data.menu.menuItems.map((item, i) => {
-											return <li key={`fm-${i}`}>
-												<Link to={item.link} title={item.title} rel="nofollow">{item.title}</Link>
-											</li>
+											return	<Link key={`fm-${i}`} to={item.link} title={item.title} rel="nofollow">{item.title}</Link>
 										})}
 									</nav>
 									<div className="d-flex flex-sm-row justify-content-sm-center">
