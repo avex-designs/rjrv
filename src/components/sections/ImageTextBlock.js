@@ -1,6 +1,5 @@
 import React from "react"
 import {Link} from "gatsby"
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
 
 const ImageLeftBlock = (props) => {
@@ -39,7 +38,7 @@ const ImageLeftBlock = (props) => {
 			<div className="col-12 col-md-5">
 				<h2 className="mb-3">{data.title}</h2>
 				<div className="rjrv-decoration-block">
-					{documentToReactComponents(data.text.json)}
+					<p dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></p>
 					{link(data)}
 				</div>
 			</div>
@@ -54,7 +53,7 @@ const ImageLeftBlock = (props) => {
 			<div className="col-12 col-md-5">
 				<h2 className="mb-3">{data.title}</h2>
 				<div className="rjrv-decoration-block">
-					{documentToReactComponents(data.text.json)}
+					<p dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></p>
 					{link(data)}
 				</div>
 			</div>
@@ -80,7 +79,7 @@ const ImageLeftBlock = (props) => {
 		}
 	};
 	return (
-		<section className={`section m-0 p-0 pt-sm-3 pt-5 pb-sm-3 pb-5 mt-sm-5 mb-sm-5 ${defaultBGColor(blockData)}`}
+		<section id={props.section?props.section:false} className={`section m-0 p-0 pt-sm-3 pt-5 pb-sm-3 pb-5 mt-sm-5 mb-sm-5 ${defaultBGColor(blockData)}`}
 				 style={bgColor(blockData.bgColor)}>
 			<div className="container container-large pt-5 pb-5">
 				<div className="row pt-lg-5 pb-lg-5">

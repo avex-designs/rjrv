@@ -11,12 +11,12 @@ import TextAreaBlock from "../components/sections/TextAreaBlock";
 const CMS5 = (data) => {
 	let imageBlocks = (blocks) => (
 		blocks.map((item, i)=>{
-			return <ImageTextBlock data={item} key={i}/>;
+			return <ImageTextBlock data={item} key={i} section={`section-${i}`}/>;
 		})
 	);
 	return (
-		<Layout>
-			<SEO title={data.data.single.title}/>
+		<Layout pageSlug={data.data.single.preTitle}>
+			<SEO title={data.data.single.title.toUpperCase()}/>
 			<AdvancedTitle data={data.data.single}/>
 			{imageBlocks(data.data.single.imageTextBlock)}
 			<TextAreaBlock data={data.data.single.textArea}/>
@@ -46,7 +46,9 @@ export const query = graphql`
 		  url
 		  title
 		  text {
-			json
+			childMarkdownRemark {
+				html
+			  }
 		  }
 		  imagePosition {
 			imagePosition

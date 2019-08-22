@@ -1,6 +1,5 @@
 import React from "react"
 import {Link} from "gatsby"
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
 
 const BlogPost = (props) => {
@@ -84,7 +83,7 @@ const BlogPost = (props) => {
 			{img(post)}
 			{date(post)}
 			<h3>{post.title}</h3>
-			{documentToReactComponents(post.text.json)}
+			<p dangerouslySetInnerHTML={{__html: post.text.childMarkdownRemark.html}}></p>
 			{link(post)}
 		</article>
 	)

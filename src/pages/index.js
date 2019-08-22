@@ -43,7 +43,9 @@ query HomeQuery {
     nodes {
       title
       text {
-        json
+        childMarkdownRemark {
+			html
+		  }
       }
       createdAt(formatString: "MMMM DD, YYYY")
       externalUrl
@@ -100,7 +102,9 @@ query HomeQuery {
         imagePosition
       }
       text {
-        json
+        childMarkdownRemark {
+			html
+		  }
       }
       title
       url

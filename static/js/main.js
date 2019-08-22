@@ -29,11 +29,11 @@ window.onload = function() {
     });*/
 
     // Mobile Menu
-    document.onclick = function(e){
+    /*document.onclick = function(e){
         if(e.target.id == 'backgroundOverlay'){
             toggleMobileMenu();
         }
-    };
+    };*/
 
 
     // Mobile Menu Accordion
@@ -66,7 +66,7 @@ document.querySelector('#mobileTriggerOpen').addEventListener('click', function 
 	toggleMobileMenu();
 });*/
 
-function toggleMobileMenu(){
+/*function toggleMobileMenu(){
     var btn = document.querySelectorAll('.target-burger');
     var menu = document.querySelector('.offcanvas-slide-menu');
     var offCanvas = document.querySelector('.offcanvas-overlay');
@@ -77,10 +77,10 @@ function toggleMobileMenu(){
     
     offCanvas.classList.toggle('offcanvas-active');
     menu.classList.toggle('active');
-}
+}*/
 
 
-var scrollpos = window.scrollY;
+/*var scrollpos = window.scrollY;
 var header = document.getElementsByClassName("rjrv-l-header")[0];
 
 
@@ -101,7 +101,7 @@ window.addEventListener('scroll', function(){
     else {
         remove_class_on_scroll();
     }
-});
+});*/
 
 
 

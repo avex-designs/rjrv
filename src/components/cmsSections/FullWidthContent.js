@@ -1,5 +1,4 @@
 import React from "react"
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
 
 const FullWidthContent = (props) => {
 	let text = props.data;
@@ -8,7 +7,7 @@ const FullWidthContent = (props) => {
 			<div className="container">
 				<div className="row">
 					<div className="col-12">
-						{documentToReactComponents(text)}
+						<p dangerouslySetInnerHTML={{__html: text}}></p>
 					</div>
 				</div>
 			</div>

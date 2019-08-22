@@ -7,10 +7,10 @@ import ImageTitle from "../components/cmsSections/ImageTitle";
 import HalfWidthContent from "../components/cmsSections/HalfWidthContent";
 
 const CMS3 = (data) => (
-	<Layout>
-		<SEO title={data.data.single.title}/>
+	<Layout pageSlug={data.data.single.title}>
+		<SEO title={data.data.single.title.toUpperCase()}/>
 		<ImageTitle  data={data.data.single}/>
-		<HalfWidthContent  data1={data.data.single.textColumnLeft.json} data2={data.data.single.textColumnRight.json}/>
+		<HalfWidthContent  data1={data.data.single.textColumnLeft.childMarkdownRemark.html} data2={data.data.single.textColumnRight.childMarkdownRemark.html}/>
 	</Layout>
 )
 
@@ -33,10 +33,14 @@ export const query = graphql`
 		  }
 		}
 		textColumnLeft {
-		  json
+		  childMarkdownRemark {
+			html
+		  }
 		}
 		textColumnRight {
-		  json
+		  childMarkdownRemark {
+			html
+		  }
 		}
 		thumbnailImage {
 		  sizes(maxWidth: 1200){

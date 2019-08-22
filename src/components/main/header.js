@@ -17,7 +17,65 @@ class Header extends React.Component {
 		menu.classList.toggle('active');
 	};
 
+	scroll = () => {
+		let scrollpos = window.scrollY;
+		let header = document.getElementsByClassName("rjrv-l-header")[0];
+
+
+		function add_class_on_scroll() {
+			header.classList.add("bg-large-white");
+		}
+
+		function remove_class_on_scroll() {
+			header.classList.remove("bg-large-white");
+		}
+
+		window.addEventListener('scroll', function () {
+			scrollpos = window.scrollY;
+
+			if (scrollpos > 90) {
+				add_class_on_scroll();
+			}
+			else {
+				remove_class_on_scroll();
+			}
+		});
+	};
+
+
+	componentDidMount() {
+		this.scroll();
+	}
+
+	activeSub = (current, subItems) => {
+		if(current && subItems) {
+			let active = 0;
+			subItems.map((it, i) => {
+				if (it.title.toLowerCase() === current.toLowerCase()) {
+					active += 1;
+				}
+				return true;
+			});
+			if (active > 0) {
+				return ('active');
+			}
+			return false;
+		}
+	};
+	active = (current, item) => {
+		if(current && item){
+			if(current.toLowerCase() === item.replace(/\//g, '').toLowerCase()){
+				return ('active');
+			}
+		}
+	};
+	constructor(data) {
+		super(data);
+		this.currentPage = data.currentMenuItem;
+	}
+
 	render() {
+
 		return (
 			<StaticQuery
 				query={graphql`
@@ -50,28 +108,31 @@ class Header extends React.Component {
 								{
 									data.menu.menuItems.map((item, i) => {
 										if (item.subMenu) {
-											return <li className="has-sub-menu" key={`hm-${i}`}>
+											return <li className={`has-sub-menu ${this.activeSub(this.currentPage, item.subMenu)}`} key={`hm-${i}`}>
 												<div>{item.title}</div>
 												<ul>
 													{item.subMenu.map((sub, subi) => {
 														if (sub.subMenu) {
-															return <li key={`hmsub1-${subi}`}><Link to={sub.link}>{sub.title}</Link>
+															return <li key={`hmsub1-${subi}`} >
+																<Link to={sub.link}>{sub.title}</Link>
 																<ul>
 																	{sub.subMenu.map((sub1, subi1) => {
-																		return <li key={`hmsub2-${subi1}`}><Link
-																			to={sub1.link}>{sub1.title}</Link></li>
+																		return  <li key={`hmsub2-${subi1}`}>
+																					<Link to={sub1.link}>{sub1.title}</Link>
+																				</li>
 																	})}
 																</ul>
 															</li>
 														} else {
-															return <li key={subi}><Link to={sub.link}>{sub.title}</Link>
+															return <li key={subi} className={this.active(this.currentPage, sub.title)}><Link to={sub.link}>{sub.title}</Link>
 															</li>
 														}
 													})}
 												</ul>
 											</li>;
 										} else {
-											return <li key={`hm-${i}`}>
+											return <li key={`hm-${i}`}
+													   className={this.active(this.currentPage, item.title)}>
 												<Link to={item.link}>{item.title}</Link>
 											</li>
 										}

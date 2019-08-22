@@ -1,5 +1,4 @@
 import React from "react"
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
 
 const HalfWidthContent = (props) => {
 	let text1 = props.data1;
@@ -9,10 +8,10 @@ const HalfWidthContent = (props) => {
 			<div className="container container-large">
 				<div className="row">
 					<div className="col-12 col-lg-5 offset-lg-1">
-						{documentToReactComponents(text1)}
+						<p dangerouslySetInnerHTML={{__html: text1}}></p>
 					</div>
 					<div className="col-12 col-lg-5 offset-lg-1">
-						{documentToReactComponents(text2)}
+						<p dangerouslySetInnerHTML={{__html: text2}}></p>
 					</div>
 				</div>
 			</div>

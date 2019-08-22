@@ -34,7 +34,7 @@ module.exports = {
 		const media = path.resolve("./src/templates/media.js");
 
 		//number of posts/careers per page
-		const postsPerPage = 4;
+		const postsPerPage = 2;
 		const numPagesPosts = response.data.posts.totalCount;
 		const totalPages = Math.ceil(numPagesPosts / postsPerPage);
 		for (let i = 0; i < totalPages; i++) {
@@ -214,7 +214,7 @@ module.exports = {
             type ContentfulImageTextBlock implements Node {
             	title: String,
             	bgColor: String,
-            	text: contentfulImageTextBlockTextRichTextNode,
+            	text: contentfulImageTextBlockTextTextNode,
             	image: ContentfulAsset,
             	imagePosition: contentfulImageTextBlockImagePositionTextNode,
             	urlText: String, 
@@ -239,7 +239,7 @@ module.exports = {
             	slug: String,
             	bgColor: String,
             	bgPattern: ContentfulAsset,
-            	text: contentfulCmsOption1TextRichTextNode
+            	text: contentfulCmsOption1TextContentTextNode
             }
             type ContentfulCmsOption2 implements Node {
             	title: String,
@@ -247,7 +247,7 @@ module.exports = {
             	bgColor: String,
             	bgPattern: ContentfulAsset,
             	thumbnailImage: ContentfulAsset,
-            	text: contentfulCmsOption2TextRichTextNode
+            	text: contentfulCmsOption2TextContentTextNode
             }
             type ContentfulCmsOption3 implements Node {
             	title: String,
@@ -255,8 +255,8 @@ module.exports = {
             	bgColor: String,
             	bgPattern: ContentfulAsset,
             	thumbnailImage: ContentfulAsset,
-            	textColumnLeft: contentfulCmsOption3TextColumnLeftRichTextNode,
-            	textColumnRight: contentfulCmsOption3TextColumnRightRichTextNode
+            	textColumnLeft: contentfulCmsOption3TextColumnLeftTextNode,
+            	textColumnRight: contentfulCmsOption3TextColumnRightTextNode
             }
             type ContentfulCmsOption4 implements Node {
             	title: String,
@@ -301,7 +301,7 @@ module.exports = {
              type ContentfulBlogSingle implements Node {
             	title: String,
             	slug: String,
-            	text: contentfulBlogSingleTextRichTextNode,
+            	text: contentfulBlogSingleTextTextNode,
             	bgColor: String,
             	bgPattern: ContentfulAsset,
             	thumbnailImage: ContentfulAsset,

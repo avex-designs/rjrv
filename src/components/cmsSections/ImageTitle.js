@@ -31,7 +31,7 @@ const ImageTitle = (props) => {
 						{img(data)}
 					</div>
 					<div className="col-12 col-sm-5 col-xl-6">
-						<h1 className="rjrv-fadeInText">{data.title}</h1>
+						<h1 className={`rjrv-fadeInText ${(props.type === 'product') ? ' mb-0' : ''}`}>{data.title}</h1>
 					</div>
 				</div>
 			</div>

@@ -7,10 +7,10 @@ import FullWidthContent from "../components/cmsSections/FullWidthContent";
 import SimpleTitle from "../components/cmsSections/SimpleTitle";
 
 const CMS1 = (data) => (
-	<Layout>
-		<SEO title={data.data.single.title} />
+	<Layout pageSlug={data.data.single.title}>
+		<SEO title={data.data.single.title.toUpperCase()} />
 		<SimpleTitle data={data.data.single}/>
-		<FullWidthContent data={data.data.single.text.json}/>
+		<FullWidthContent data={data.data.single.textContent.childMarkdownRemark.html}/>
 	</Layout>
 )
 
@@ -18,7 +18,7 @@ export default CMS1
 
 export const query = graphql`
   query CMS1SingleQuery($slug: String!) {
-  site {
+  	site {
       siteMetadata {
         title
       }
@@ -32,8 +32,10 @@ export const query = graphql`
 			src
 		  }
 		}
-		text {
-		  json
+		textContent {
+		  childMarkdownRemark {
+			html
+		  }
 		}
 	  }
   }

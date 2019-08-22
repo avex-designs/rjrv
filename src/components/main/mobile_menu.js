@@ -18,7 +18,6 @@ class Menu extends React.Component {
 	accordion = () =>{
 		let acc = document.getElementsByClassName("mobile-parent-sub-menu");
 		let i;
-		console.log(acc);
 		for (i = 0; i < acc.length; i++) {
 			acc[i].addEventListener("click", function(e) {
 				e.preventDefault();

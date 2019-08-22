@@ -15,7 +15,7 @@ import MobileMenu from "./mobile_menu"
 import "../../assets/css/main.css"
 import Helmet from "react-helmet"
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,8 +24,7 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
-
+  `);
   return (
     <>
         <Helmet>
@@ -36,8 +35,8 @@ const Layout = ({ children }) => {
         {/*<!-- Off Canvas Overlay -->*/}
         <div id="backgroundOverlay" className="offcanvas-overlay"></div>
         <MobileMenu/>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main className="responsive-text">{children}</main>
+        <Header siteTitle={data.site.siteMetadata.title} currentMenuItem={props.pageSlug}/>
+        <main className="responsive-text">{props.children}</main>
         <Footer/>
     </>
   )

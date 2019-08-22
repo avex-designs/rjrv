@@ -14,8 +14,8 @@ const CMS4 = (data) => {
 		})
 	);
 	return (
-		<Layout>
-			<SEO title={data.data.single.title}/>
+		<Layout pageSlug={data.data.single.title}>
+			<SEO title={data.data.single.title.toUpperCase()}/>
 			<SimpleTitle data={data.data.single}/>
 			{blocks(data.data.single.blocks)}
 		</Layout>

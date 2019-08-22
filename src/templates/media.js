@@ -21,13 +21,20 @@ const Media = (data) => {
 						text-align: center;
 						margin: 0 5px;
 						padding: 0 5px;
+						width: 25px; 
 						background: #1d427a;
 						display: inline-block;
+						
+						&:hover{
+						 background: #4c596e;
+    					 transition: all 0.35s;
+					}
 					}
 					a.current{
 						cursor: not-allowed;
 					 	background: #4d5a6f;
 					}
+					
 			}
 		}
 	
@@ -47,21 +54,21 @@ const Media = (data) => {
 					<ul>
 						{!isFirst && (
 							<li>
-								<Link to={`media/${prevPage}`} className="arrows" rel="prev">
+								<Link to={`/media/${prevPage}`} className="arrows" rel="prev">
 									&lt;
 								</Link>
 							</li>
 						)}
 						{Array.from({length: totalPages}, (_, i) => (
-							<li>
-								<Link key={`pagination-number${i + 1}`} to={`media/${i === 0 ? "" : i + 1}`} className={(i+1) === pageInfo.currentPage?'current':''}>
+							<li key={`pagination-number${i + 1}`}>
+								<Link  to={`/media/${i === 0 ? "" : i + 1}`} className={(i+1) === pageInfo.currentPage?'current':''}>
 									{i + 1}
 								</Link>
 							</li>
 						))}
 						{!isLast && (
 							<li>
-								<Link to={`media/${nextPage}`}  className="arrows" rel="next">
+								<Link to={`/media/${nextPage}`}  className="arrows" rel="next">
 									&gt;
 								</Link>
 							</li>
@@ -76,8 +83,8 @@ const Media = (data) => {
 
 	};
 	return(
-		<Layout>
-			<SEO title="MEDIA" />
+		<Layout pageSlug={data.data.media.title}>
+			<SEO title={data.data.media.title.toUpperCase()} />
 			<ImageTitle data={data.data.media}/>
 			<BlogPostsBlock data={data.data.posts}/>
 			{pagination()}
@@ -100,7 +107,9 @@ export const query = graphql`
 		  title
 		  slug
 		  text {
-			json
+			childMarkdownRemark {
+				html
+			  }
 		  }
 		  publishedDate(formatString: "MMMM DD, YYYY")
 		  thumbnailImage {

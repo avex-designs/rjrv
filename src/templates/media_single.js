@@ -8,9 +8,9 @@ import ImageTitle from "../components/cmsSections/ImageTitle";
 
 const MediaSingle = (data) => (
 	<Layout>
-		<SEO title="MEDIA Single"/>
+		<SEO title={data.data.single.title.toUpperCase()}/>
 		<ImageTitle data={data.data.single}/>
-		<FullWidthContent data={data.data.single.text.json}/>
+		<FullWidthContent data={data.data.single.text.childMarkdownRemark.html}/>
 	</Layout>
 );
 
@@ -27,7 +27,9 @@ export const query = graphql`
       title
       slug
       text {
-        json
+        childMarkdownRemark {
+			html
+		  }
       }
       thumbnailImage {
           sizes(maxWidth: 1200){

@@ -7,10 +7,10 @@ import FullWidthContent from "../components/cmsSections/FullWidthContent";
 import ImageTitle from "../components/cmsSections/ImageTitle";
 
 const ProductSingle = (data) => (
-	<Layout>
+	<Layout pageSlug={data.data.single.title}>
 		<SEO title={data.data.single.title} />
-		<ImageTitle  data={data.data.single}/>
-		<FullWidthContent data={data.data.single.text.json}/>
+		<ImageTitle  data={data.data.single} type='product'/>
+		<FullWidthContent data={data.data.single.text.childMarkdownRemark.html}/>
 	</Layout>
 )
 
@@ -27,12 +27,14 @@ export const query = graphql`
 		title
 		slug
 		thumbnailImage {
-		  sizes(maxWidth: 1200){
+		  sizes(maxWidth: 1500){
 		  	...GatsbyContentfulSizes
 		  }		  
 		}
 		text {
-		  json
+		  childMarkdownRemark {
+			html
+		  }
 		}
 	  }
   }
