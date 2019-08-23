@@ -79,7 +79,7 @@ class Menu extends React.Component {
 								data.headermenu.menuItems.map((item, i) => {
 									if (item.subMenu) {
 										return <li className="mobile-has-sub-menu" key={`mbm-${i}`}>
-											<div className="mobile-parent-sub-menu">{item.title}</div>
+											<a href='#' className="mobile-parent-sub-menu">{item.title}</a>
 											<ul>
 												{item.subMenu.map((sub, subi) => {
 													if (sub.subMenu) {

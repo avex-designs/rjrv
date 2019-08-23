@@ -59,7 +59,7 @@ class Header extends React.Component {
 			if (active > 0) {
 				return ('active');
 			}
-			return false;
+			return null;
 		}
 	};
 	active = (current, item) => {
