@@ -25,7 +25,9 @@ const Layout = (props) => {
 				return null;
 			}
 		}
-
+	}else{
+		return null;
+	}
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -51,7 +53,6 @@ const Layout = (props) => {
         <Footer/>
     </>
   )
-	}
 }
 
 Layout.propTypes = {
