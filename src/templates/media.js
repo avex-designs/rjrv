@@ -21,7 +21,10 @@ const Media = (data) => {
 						text-align: center;
 						margin: 0 5px;
 						padding: 0 5px;
-						width: 25px; 
+						    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
 						background: #1d427a;
 						display: inline-block;
 						
@@ -49,7 +52,7 @@ const Media = (data) => {
 		const isLast = pageInfo.currentPage === totalPages;
 
 		if(totalPages > 1){
-			return <PaginationWrapper><div className="row justify-content-center">
+			return <PaginationWrapper><div className="container container-large"><div className="row justify-content-center">
 				<div className="pagination">
 					<ul>
 						{!isFirst && (
@@ -75,7 +78,7 @@ const Media = (data) => {
 						)}
 					</ul>
 				</div>
-			</div>
+			</div></div>
 			</PaginationWrapper>
 		}else{
 			return null;
