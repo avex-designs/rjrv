@@ -30,7 +30,7 @@ const LeadershipBlock = (props) => {
 					<span className="d-block m-0"><small>President, R. J. Reynolds Vapor Company (RJRVC)</small></span>
 					<span className="d-block m-0"><small>President, RAI Innovations Company (RAIIC)</small></span>
 				</div>
-				<p dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></p>
+				<div dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></div>
 			</div>
 			{img(data)}
 			</>
@@ -46,7 +46,7 @@ const LeadershipBlock = (props) => {
 					<span className="d-block m-0"><small>President, R. J. Reynolds Vapor Company (RJRVC)</small></span>
 					<span className="d-block m-0"><small>President, RAI Innovations Company (RAIIC)</small></span>
 				</div>
-				<p dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></p>
+				<div dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></div>
 			</div>
 			</>
 		)

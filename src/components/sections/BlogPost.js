@@ -83,7 +83,7 @@ const BlogPost = (props) => {
 			{img(post)}
 			{date(post)}
 			<h3>{post.title}</h3>
-			<p dangerouslySetInnerHTML={{__html: post.text.childMarkdownRemark.html}}></p>
+			<div dangerouslySetInnerHTML={{__html: post.text.childMarkdownRemark.html}}></div>
 			{link(post)}
 		</article>
 	)

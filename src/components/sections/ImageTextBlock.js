@@ -38,7 +38,7 @@ const ImageLeftBlock = (props) => {
 			<div className="col-12 col-md-5">
 				<h2 className="mb-3">{data.title}</h2>
 				<div className="rjrv-decoration-block">
-					<p dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></p>
+					<div dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></div>
 					{link(data)}
 				</div>
 			</div>
@@ -53,7 +53,7 @@ const ImageLeftBlock = (props) => {
 			<div className="col-12 col-md-5">
 				<h2 className="mb-3">{data.title}</h2>
 				<div className="rjrv-decoration-block">
-					<p dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></p>
+					<div dangerouslySetInnerHTML={{__html: data.text.childMarkdownRemark.html}}></div>
 					{link(data)}
 				</div>
 			</div>

@@ -7,7 +7,7 @@ const FullWidthContent = (props) => {
 			<div className="container">
 				<div className="row">
 					<div className="col-12">
-						<p dangerouslySetInnerHTML={{__html: text}}></p>
+						<div dangerouslySetInnerHTML={{__html: text}}></div>
 					</div>
 				</div>
 			</div>

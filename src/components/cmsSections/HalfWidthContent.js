@@ -8,10 +8,10 @@ const HalfWidthContent = (props) => {
 			<div className="container container-large">
 				<div className="row">
 					<div className="col-12 col-lg-5 offset-lg-1">
-						<p dangerouslySetInnerHTML={{__html: text1}}></p>
+						<div dangerouslySetInnerHTML={{__html: text1}}></div>
 					</div>
 					<div className="col-12 col-lg-5 offset-lg-1">
-						<p dangerouslySetInnerHTML={{__html: text2}}></p>
+						<div dangerouslySetInnerHTML={{__html: text2}}></div>
 					</div>
 				</div>
 			</div>
