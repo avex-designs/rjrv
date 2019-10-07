@@ -49,6 +49,12 @@ module.exports = {
             path: `${__dirname}/src/routes.js`,
         },
     },*/
+	  {
+		  resolve: `gatsby-plugin-s3`,
+		  options: {
+			  bucketName: 'dev.rjrvapor.com'
+		  },
+	  },
     {
         resolve: `gatsby-source-contentful`,
         options: {
