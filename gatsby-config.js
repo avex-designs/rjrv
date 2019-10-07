@@ -58,8 +58,8 @@ module.exports = {
     {
         resolve: `gatsby-source-contentful`,
         options: {
-            spaceId: '7k1qvvohxz7r',
-            accessToken: 'cmFvlOlmD_FYNlXLqfJ15GEEes-KxHwWceHynvbS_R0'
+            spaceId: 'ftcqfefyaoco',
+            accessToken: 'eai73ekiCjjdWz5pqIoj4GigIPmCJYJDsehcjwaCVIo'
         }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
