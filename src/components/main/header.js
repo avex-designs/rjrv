@@ -163,7 +163,7 @@ class Header extends React.Component {
 															}else{
 																return <li key={subi}
 																		   className={this.active(this.currentPage, sub.title)}>
-																	<Link to={sub.link}>{sub.title} {sub.link}</Link>
+																	<Link to={sub.link}>{sub.title}</Link>
 																</li>
 															}
 														}
