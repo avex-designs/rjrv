@@ -161,7 +161,10 @@ class Header extends React.Component {
 																	<a href={sub.link}>{sub.title}</a>
 																</li>
 															}else{
-																return this.urlChecker(sub.link)
+																return <li key={subi}
+																		   className={this.active(this.currentPage, sub.title)}>
+																	<Link to={sub.link}>{sub.title} {sub.link}</Link>
+																</li>
 															}
 														}
 													})}
