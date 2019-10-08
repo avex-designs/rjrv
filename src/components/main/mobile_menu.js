@@ -15,6 +15,12 @@ class Menu extends React.Component {
 		menu.classList.toggle('active');
 	};
 
+	urlChecker = function(str){
+		let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+		let regex = new RegExp(expression);
+		return str.match(regex);
+	};
+
 	accordion = () =>{
 		let acc = document.getElementsByClassName("mobile-parent-sub-menu");
 		let i;
@@ -87,22 +93,37 @@ class Menu extends React.Component {
 															<div className="mobile-parent-sub-menu">{sub.title}</div>
 															<ul>
 																{sub.subMenu.map((sub1, subi1) => {
-																	return <li key={`mbsub2-${subi1}`}><Link
-																		to={sub1.link}>{sub1.title}</Link></li>
+																	if(this.urlChecker(sub1.link)) {
+																		return <li key={`mbsub2-${subi1}`}><a
+																			href={sub1.link}>{sub1.title}</a></li>
+																	}else{
+																		return <li key={`mbsub2-${subi1}`}><Link
+																			to={sub1.link}>{sub1.title}</Link></li>
+																	}
 																})}
 															</ul>
 														</li>
 													} else {
-														return <li key={`mbsub1-${subi}`}><Link to={sub.link}>{sub.title}</Link>
-														</li>
+														if(this.urlChecker(sub.link)) {
+														return <li key={`mbsub1-${subi}`}><a href={sub.link}>{sub.title}</a>
+														</li>}else{
+															return <li key={`mbsub1-${subi}`}><Link to={sub.link}>{sub.title}</Link>
+															</li>
+														}
 													}
 												})}
 											</ul>
 										</li>;
 									} else {
-										return <li key={`mbm-${i}`}>
-											<Link to={item.link}>{item.title}</Link>
-										</li>
+										if(this.urlChecker(item.link)) {
+											return <li key={`mbm-${i}`}>
+												<a href={item.link}>{item.title}</a>
+											</li>
+										}else{
+											return <li key={`mbm-${i}`}>
+												<Link to={item.link}>{item.title}</Link>
+											</li>
+										}
 									}
 								})
 							}
@@ -110,7 +131,13 @@ class Menu extends React.Component {
 
 						<nav className="d-flex flex-column rjrv-secondary-mobile-menu rjrv-condensed">
 							{data.footermenu.menuItems.map((item, i) => {
-								return <Link to={item.link} title={item.title} rel="nofollow" key={`mbbottom-${i}`}>{item.title}</Link>
+								if(this.urlChecker(item.link)) {
+									return <a href={item.link} title={item.title} rel="nofollow"
+												 key={`mbbottom-${i}`}>{item.title}</a>
+								}else{
+									return <Link to={item.link} title={item.title} rel="nofollow"
+												 key={`mbbottom-${i}`}>{item.title}</Link>
+								}
 							})}
 						</nav>
 					</div>)}/>
