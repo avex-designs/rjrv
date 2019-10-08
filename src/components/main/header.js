@@ -47,6 +47,12 @@ class Header extends React.Component {
 		this.scroll();
 	}
 
+	urlChecker = function(str){
+		let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+		let regex = new RegExp(expression);
+		return str.match(regex);
+	};
+
 	activeSub = (current, subItems) => {
 		if(current && subItems) {
 			let active = 0;
@@ -113,28 +119,66 @@ class Header extends React.Component {
 												<ul>
 													{item.subMenu.map((sub, subi) => {
 														if (sub.subMenu) {
-															return <li key={`hmsub1-${subi}`} >
-																<Link to={sub.link}>{sub.title}</Link>
-																<ul>
-																	{sub.subMenu.map((sub1, subi1) => {
-																		return  <li key={`hmsub2-${subi1}`}>
+															if(this.urlChecker(sub.link)) {
+																return <li key={`hmsub1-${subi}`}>
+																	<a href={sub.link}>{sub.title}</a>
+																	<ul>
+																		{sub.subMenu.map((sub1, subi1) => {
+																			if(this.urlChecker(sub1.link)) {
+																				return <li key={`hmsub2-${subi1}`}>
+																					<a href={sub1.link}>{sub1.title}</a>
+																				</li>
+																			}else{
+																				return <li key={`hmsub2-${subi1}`}>
 																					<Link to={sub1.link}>{sub1.title}</Link>
 																				</li>
-																	})}
-																</ul>
-															</li>
+																			}
+																		})}
+																	</ul>
+																</li>
+															}else{
+																return <li key={`hmsub1-${subi}`}>
+																	<Link to={sub.link}>{sub.title}1</Link>
+																	<ul>
+																		{sub.subMenu.map((sub1, subi1) => {
+																			if(this.urlChecker(sub1.link)) {
+																				return <li key={`hmsub2-${subi1}`}>
+																					<a href={sub1.link}>{sub1.title}</a>
+																				</li>
+																			}else{
+																				return <li key={`hmsub2-${subi1}`}>
+																					<Link to={sub1.link}>{sub1.title}</Link>
+																				</li>
+																			}
+																		})}
+																	</ul>
+																</li>
+															}
 														} else {
-															return <li key={subi} className={this.active(this.currentPage, sub.title)}><Link to={sub.link}>{sub.title}</Link>
-															</li>
+															if(this.urlChecker(sub.link)) {
+																return <li key={subi}
+																		   className={this.active(this.currentPage, sub.title)}>
+																	<a href={sub.link}>{sub.title}</a>
+																</li>
+															}else{
+																return this.urlChecker(sub.link)
+															}
 														}
 													})}
 												</ul>
 											</li>;
 										} else {
-											return <li key={`hm-${i}`}
-													   className={this.active(this.currentPage, item.title)}>
-												<Link to={item.link}>{item.title}</Link>
-											</li>
+											if(this.urlChecker(item.link)) {
+												return <li key={`hm-${i}`}
+														   className={this.active(this.currentPage, item.title)}>
+													<a href={item.link}>{item.title}</a>
+												</li>
+											}else{
+												return <li key={`hm-${i}`}
+														   className={this.active(this.currentPage, item.title)}>
+													<Link to={item.link}>{item.title}</Link>
+												</li>
+											}
 										}
 									})
 								}
