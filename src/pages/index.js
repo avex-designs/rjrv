@@ -10,7 +10,7 @@ import QuoteBlock from "../components/sections/QuoteBlock";
 import TextAreaBlock from "../components/sections/TextAreaBlock";
 import ImageTextBlock from "../components/sections/ImageTextBlock";
 import TestimonialsBlock from "../components/sections/TestimonialsBlock";
-import BlogPostsBlock from "../components/sections/BlogPostsBlock";
+import SimpleTextBlock from "../components/sections/SimpleTextBlock";
 
 
 const IndexPage = (data) => {
@@ -26,7 +26,8 @@ const IndexPage = (data) => {
 		<TextAreaBlock data={data.data.home.textArea}/>
 		{imageBlocks(data.data.home.imageTextBlocks)}
 		<TestimonialsBlock data={data.data.home.testimonial}/>
-		<BlogPostsBlock data={data.data.posts}/>
+		<SimpleTextBlock data={data.data.pageBlock}/>
+		{/*<BlogPostsBlock data={data.data.posts}/>*/}
 	</Layout>)
 }
 
@@ -39,29 +40,18 @@ query HomeQuery {
       title
     }
   }
-  posts: allContentfulBlogSingle(limit: 2, sort: {order: DESC, fields: createdAt}) {
-    nodes {
+  pageBlock:   contentfulSimplePageBlock {
+    pages {
       title
-      text {
-        childMarkdownRemark {
-			html
-		  }
-      }
       createdAt(formatString: "MMMM DD, YYYY")
-      externalUrl
-      slug
-      fileAttachment {
-        file {
-          url
+      textContent {
+        childMarkdownRemark {
+          excerpt(format: MARKDOWN, pruneLength: 350, truncate: true)
         }
       }
-      publishedDate(formatString: "MMMM DD, YYYY")
-      thumbnailImage {
-         sizes(maxWidth: 1200) {
-				...GatsbyContentfulSizes
-			  }
-        }
+      slug
     }
+    title
   }
   home: contentfulLandingPage {
     heroPreTitle

@@ -79,7 +79,7 @@ const ImageLeftBlock = (props) => {
 		}
 	};
 	return (
-		<section id={props.section?props.section:false} className={`section m-0 p-0 pt-sm-3 pt-5 pb-sm-3 pb-5 mt-sm-5 mb-sm-5 ${defaultBGColor(blockData)}`}
+		<section id={props.section?props.section:undefined} className={`section m-0 p-0 pt-sm-3 pt-5 pb-sm-3 pb-5 mt-sm-5 mb-sm-5 ${defaultBGColor(blockData)}`}
 				 style={bgColor(blockData.bgColor)}>
 			<div className="container container-large pt-5 pb-5">
 				<div className="row pt-lg-5 pb-lg-5">

@@ -308,7 +308,7 @@ module.exports = {
             	publishedDate: Date,
             	externalUrl: String,     
             	fileAttachment: ContentfulAsset
-            }     
+            }  
             type ContentfulNavigationMenu implements Node {
             	menuItems: [ContentfulMenuItem]
             }
