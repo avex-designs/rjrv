@@ -9,7 +9,7 @@ const QuoteBlock = (props) => {
 					<div className="col-12">
 						<div className="row align-items-center">
 							<div className="col-12 col-lg-5 rjrv-quote-text">
-								<blockquote cite="/" dangerouslySetInnerHTML={{__html: quote.quoteText.quoteText}}>
+								<blockquote cite="/" dangerouslySetInnerHTML={{__html: quote.quoteText.childMarkdownRemark.html}}>
 								</blockquote>
 								<p className="rjrv-condensed mt-5">{quote.quoteAuthor}</p>
 							</div>

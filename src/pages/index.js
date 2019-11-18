@@ -46,7 +46,7 @@ query HomeQuery {
       createdAt(formatString: "MMMM DD, YYYY")
       textContent {
         childMarkdownRemark {
-          excerpt(format: MARKDOWN, pruneLength: 350, truncate: true)
+          excerpt(format: MARKDOWN, pruneLength: 350)
         }
       }
       slug
@@ -66,7 +66,9 @@ query HomeQuery {
 			  }
     }
     quoteText {
-      quoteText
+      childMarkdownRemark {
+        html
+      }
     }
     quoteAuthor
     textArea {

@@ -36,7 +36,9 @@ export const query = graphql`
 	  single: contentfulCmsOption5(slug: { eq: $slug }) {
 		title
 		titleShortText {
-		  titleShortText
+		  childMarkdownRemark {
+        html
+      }
 		}
 		slug
 		preTitle

@@ -16,7 +16,7 @@ import "../../assets/css/main.css"
 import Helmet from "react-helmet"
 
 const Layout = (props) => {
-	if (typeof window !== 'undefined') {
+	/*if (typeof window !== 'undefined') {
 		if (!localStorage.getItem('pass') && localStorage.getItem('pass') !== 'p29cmnwl4a0et') {
 			let password = prompt('Password?');
 			if (password === 'p29cmnwl4a0et') {
@@ -27,7 +27,7 @@ const Layout = (props) => {
 		}
 	}else{
 		return null;
-	}
+	}*/
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {

@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `R.J. REYNOLDS VAPOR COMPANY`,
     description: `At RJRVC, we operate our business in a responsible manner that best balances the needs of our stakeholders. RJRVC is focused on offering responsible, innovative, satisfying products for adult tobacco consumers’ evolving preferences. <strong>Our Vision and Values seek to reflect the interests of shareholders, adult tobacco consumers, employees, and other stakeholders</strong>. RJRVC shares the values and principles of its parent company, Reynolds American Inc.`,
-    author: `@appliedlabs`,
+    author: `RJRV`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

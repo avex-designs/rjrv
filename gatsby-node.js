@@ -269,7 +269,6 @@ module.exports = {
             	preTitle: String,
             	title: String,
             	slug: String,
-            	titleShortText: contentfulCmsOption5TitleShortTextTextNode,
             	linkText: String,
             	imageTextBlock: [ContentfulImageTextBlock],
             	textAreaBlock: ContentfulTextAreaContent
@@ -309,6 +308,7 @@ module.exports = {
             	externalUrl: String,     
             	fileAttachment: ContentfulAsset
             }  
+                
             type ContentfulNavigationMenu implements Node {
             	menuItems: [ContentfulMenuItem]
             }

@@ -16,7 +16,7 @@ const SimpleTextBlock = (props) => {
 		<div className="container container-large">
 			<div className="row">
 				<div className="col-12 text-center mt-3 mb-3">
-					<h2>Corporate Statement</h2>
+					<h2>{posts.title}</h2>
 				</div>
 				{postsList(posts.pages)}
 			</div>
