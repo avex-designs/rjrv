@@ -7,14 +7,14 @@ const TextBlock = (props) => {
 	const subst = ``;
 	let post = props.data;
 	let length = props.length;
-	// let link = (link) => {
-	// 	return (
-	// 		<Link className="rjrv-condensed text-uppercase text-spacing"
-	// 			  to={link.slug}>
-	// 			<small className="arrow-right">Read article</small>
-	// 		</Link>
-	// 	)
-	// };
+	let link = (link) => {
+		return (
+			<Link className="rjrv-condensed text-uppercase text-spacing"
+				  to={link.slug}>
+				<small className="arrow-right">Read article</small>
+			</Link>
+		)
+	};
 
 	let date = (date) => {
 		return (
