@@ -9,7 +9,7 @@ const TextBlock = (props) => {
 	let length = props.length;
 	let link = (link) => {
 		return (
-			<Link className="rjrv-condensed text-uppercase text-spacing"
+			<Link className="rjrv-condensed text-uppercase text-spacing  mt-4 d-block"
 				  to={link.slug}>
 				<small className="arrow-right">Read article</small>
 			</Link>
