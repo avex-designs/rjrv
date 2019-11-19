@@ -3,16 +3,18 @@ import {Link} from "gatsby"
 import Img from "gatsby-image"
 
 const TextBlock = (props) => {
+	const regex = /^[\s\S]*?<p>|<\/p>[\s\S]*$/g;
+	const subst = ``;
 	let post = props.data;
 	let length = props.length;
-	let link = (link) => {
-		return (
-			<Link className="rjrv-condensed text-uppercase text-spacing"
-				  to={link.slug}>
-				<small className="arrow-right">Read article</small>
-			</Link>
-		)
-	};
+	// let link = (link) => {
+	// 	return (
+	// 		<Link className="rjrv-condensed text-uppercase text-spacing"
+	// 			  to={link.slug}>
+	// 			<small className="arrow-right">Read article</small>
+	// 		</Link>
+	// 	)
+	// };
 
 	let date = (date) => {
 		return (
@@ -30,7 +32,7 @@ const TextBlock = (props) => {
 		<article className={`col-12 col-md-6 pb-5 pr-lg-5 ${length}`}>
 			{date(post)}
 			<h3>{post.title}</h3>
-			<div dangerouslySetInnerHTML={{__html: post.textContent.childMarkdownRemark.excerpt}}></div>
+			<div dangerouslySetInnerHTML={{__html: post.textContent.childMarkdownRemark.excerpt.replace(regex, subst)}}></div>
 			{link(post)}
 		</article>
 	)

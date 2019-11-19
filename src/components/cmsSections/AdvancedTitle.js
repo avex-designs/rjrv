@@ -24,7 +24,7 @@ const AdvancedTitle = (props) => {
 						<div className="rjrv-decoration-block"><span className="rjrv-condensed text-uppercase">{data.preTitle}</span>
 						</div>
 						<h1 className="rjrv-fadeInText rjrv-section-title-lg">{data.title}</h1>
-						<p className="rjrv-half-max-lg">{data.titleShortText.childMarkdownRemark.html}</p>
+						<p className="rjrv-half-max-lg">{data.titleShortText.childMarkdownRemark.html.replace(/(<p)/igm, '<div').replace(/<\/p>/igm, '</div>')}</p>
 						<p><a href="#section-0" className="arrow-down">{data.linkText}</a></p>
 					</div>
 				</div>
