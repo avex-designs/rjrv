@@ -26,7 +26,7 @@ const IndexPage = (data) => {
 		<TextAreaBlock data={data.data.home.textArea}/>
 		{imageBlocks(data.data.home.imageTextBlocks)}
 		<TestimonialsBlock data={data.data.home.testimonial}/>
-		<SimpleTextBlock data={data.data.pageBlock}/>
+		{/* <SimpleTextBlock data={data.data.pageBlock}/> */}
 		{/*<BlogPostsBlock data={data.data.posts}/>*/}
 	</Layout>)
 }
@@ -40,19 +40,7 @@ query HomeQuery {
       title
     }
   }
-  pageBlock:   contentfulSimplePageBlock {
-    pages {
-      title
-      createdAt(formatString: "MMMM DD, YYYY")
-      textContent {
-        childMarkdownRemark {
-          excerpt(format: MARKDOWN, pruneLength: 350)
-        }
-      }
-      slug
-    }
-    title
-  }
+  
   home: contentfulLandingPage {
     heroPreTitle
     heroTitle {
